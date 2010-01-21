@@ -8,7 +8,7 @@ public class IdeaMenuAction extends AnAction {
     private GenericAction action;
 
   public IdeaMenuAction(GenericAction a) {
-    super(a.getLabel(), null, a.getIcon());
+    super(a.getName(), null, a.getIcon());
     this.action = a;
   }
 

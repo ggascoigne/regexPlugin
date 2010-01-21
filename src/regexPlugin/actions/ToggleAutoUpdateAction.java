@@ -4,14 +4,10 @@ import regexPlugin.IconCache;
 import regexPlugin.MatchAction;
 import regexPlugin.RegexPluginConfig;
 
-public class ToggleAutoUpdateAction extends GenericToggleAction {
-  private MatchAction fAction;
-  private RegexPluginConfig fConfig;
+public class ToggleAutoUpdateAction extends MatchToggleAction {
 
-  public ToggleAutoUpdateAction(RegexPluginConfig config, MatchAction action, IconCache iconCache) {
-    super("autoUpdate", iconCache.getIcon("autoupdate.png"));
-    this.fConfig = config;
-    this.fAction = action;
+  public ToggleAutoUpdateAction(MatchAction action, IconCache iconCache, RegexPluginConfig config) {
+    super(null, "autoUpdate", iconCache.getIcon("autoupdate.png"), action, config);
   }
 
   public boolean isSelected() {
@@ -25,13 +21,4 @@ public class ToggleAutoUpdateAction extends GenericToggleAction {
     }
   }
 
-  public void fireAction() {
-    fireAction(fConfig.isAutoUpdateEnabled());
-  }
-
-  public void fireAction(boolean force) {
-    if (force == true) {
-      fAction.perform();
-    }
-  }
 }

@@ -20,6 +20,7 @@ import java.util.prefs.Preferences;
 public class LibraryManager implements ActionListener, PopupMenuListener, Notifiable {
   static final String libraryRoot = "regexPlugin/Library";
 
+  public static final String EVENT_NEW = "new";
   public static final String EVENT_SAVE = "save";
   public static final String EVENT_LOAD = "load";
   public static final String EVENT_DELETE = "delete";
@@ -41,7 +42,7 @@ public class LibraryManager implements ActionListener, PopupMenuListener, Notifi
 
   public void actionPerformed(final ActionEvent e) {
     final JComboBox cb = (JComboBox) e.getSource();
-    if (cb == null) {
+    if (cb == null || m_comboBox == null) {
       m_comboBox = cb;
     } else {
       assert cb == m_comboBox;
@@ -77,7 +78,7 @@ public class LibraryManager implements ActionListener, PopupMenuListener, Notifi
 
   public void popupMenuWillBecomeVisible(final PopupMenuEvent e) {
     final JComboBox cb = (JComboBox) e.getSource();
-    if (cb == null) {
+    if (cb == null || m_comboBox == null) {
       m_comboBox = cb;
     } else {
       assert cb == m_comboBox;
@@ -249,6 +250,11 @@ public class LibraryManager implements ActionListener, PopupMenuListener, Notifi
     }
   }
 
+  public static void newEntry() {
+    System.out.println("New");
+    EventManager.getInstance().fireEvent(EventManager.getGlobalTarget(), LibraryManager.EVENT_NEW, null);
+  }
+
   /**
    * Called in response to the static delete method
    *
@@ -265,6 +271,40 @@ public class LibraryManager implements ActionListener, PopupMenuListener, Notifi
       loadLibrary(newLibraryName);
       setCurrentLibraryName(newLibraryName);
     }
+  }
+
+  /**
+   * Called in response to the static newEntry method
+   *
+   */
+  public void newed() {
+    final String[] names = getLibraryList();
+    loadModel(m_panel.getLibraryModel());
+    m_panel.clearFields();
+    final String newLibraryName = makeNewLibraryName(names);
+    m_panel.getLibraryModel().setSelectedItem(newLibraryName);
+    loadLibrary(newLibraryName);
+    setCurrentLibraryName(newLibraryName);
+  }
+
+  private boolean find( String [] names, String name )
+  {
+    for (int i = 0; i < names.length; i++) {
+      String s = names[i];
+      if ( s.equals(name))
+        return true;
+    }
+    return false;
+  }
+
+  private String makeNewLibraryName(String[] names) {
+    final String initialLibraryName = "New Regex";
+    String newLibraryName = initialLibraryName;
+    int i = 0;
+    while ( find( names, newLibraryName ) ) {
+      newLibraryName = initialLibraryName + " " + ++i;
+    }
+    return newLibraryName;
   }
 
   /**

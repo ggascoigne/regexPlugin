@@ -35,7 +35,7 @@ public class PasteRegexStringAction extends GenericAction {
     " )                                                        \n" +
     " # Finish with a closing non-escaped quote                \n" +
     " (?:(?<!\\\\)\")                                          \n" +
-    " # The allow this sequence to be repeated with plus       \n" +
+    " # Then allow this sequence to be repeated with plus      \n" +
     " # signs joining the strings                              \n" +
     " (?:\\s*\\+\\s*)*                                         \n" +
     ")                                                         \n", Pattern.COMMENTS | Pattern.MULTILINE);
@@ -48,13 +48,13 @@ public class PasteRegexStringAction extends GenericAction {
     "  (.*?)                                              \n" +
     "  # Finish with a closing non-escaped quote          \n" +
     " (?:(?<!\\\\)\")                                     \n" +
-    " # The allow this sequence to be repeated with plus  \n" +
+    " # Then allow this sequence to be repeated with plus \n" +
     " # signs joining the strings                         \n" +
     " (?:\\s*\\+\\s*)*                                    \n" +
     ")                                                    \n", Pattern.COMMENTS | Pattern.MULTILINE);
 
   public PasteRegexStringAction(final RegexPanel panel) {
-    super(panel, "pasteRegexString", null);
+    super(panel, "pasteRegexString", panel.getIconCache().getIcon("paste.png"));
     m_anAction = panel.getMatchAction();
     m_pattern = panel.getPatternComponent();
   }

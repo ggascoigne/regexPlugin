@@ -14,18 +14,24 @@ public class RegexPluginConfig {
   public boolean autoUpdate = true;
   public boolean referenceOn = false;
   public int referencePos = 50;
+  public boolean showLabels = true;
 
   public RegexPluginConfig() {
   }
 
-  public RegexPluginConfig(final int pos1, 
-                           final int pos2, 
-                           final int pos3, 
-                           final int pos4, 
-                           final int pos5, 
+  public RegexPluginConfig(final int pos1,
+                           final int pos2,
+                           final int pos3,
+                           final int pos4,
+                           final int pos5,
                            final boolean autoUpdate,
                            final boolean referenceOnOff,
-                           final int referencePos) {
+                           final int referencePos,
+                           final boolean showLabels) {
+    update(pos1, pos2, pos3, pos4, pos5, autoUpdate, referenceOnOff, referencePos, showLabels);
+  }
+
+  public void update(int pos1, int pos2, int pos3, int pos4, int pos5, boolean autoUpdate, boolean referenceOnOff, int referencePos, boolean showLabels) {
     this.pos1 = pos1;
     this.pos2 = pos2;
     this.pos3 = pos3;
@@ -34,6 +40,7 @@ public class RegexPluginConfig {
     this.autoUpdate = autoUpdate;
     this.referenceOn = referenceOnOff;
     this.referencePos = referencePos;
+    this.showLabels = showLabels;
   }
 
   public String toString() {
@@ -45,7 +52,8 @@ public class RegexPluginConfig {
       " pos5: " + pos5 + "\n" +
       " autoUpdate: " + autoUpdate + "\n" +
       " referenceOn: " + referenceOn + "\n" +
-      " referencePos: " + referencePos + "\n";
+      " referencePos: " + referencePos + "\n" +
+      " showLabels: " + showLabels + "\n";
   }
 
   /**
@@ -63,13 +71,14 @@ public class RegexPluginConfig {
     autoUpdate = readBooleanOption(e, "autoUpdate", autoUpdate);
     referenceOn = readBooleanOption(e, "referenceOn", referenceOn);
     referencePos = readIntOption(e, "referencePos", referencePos);
+    showLabels = readBooleanOption(e, "showLabels", showLabels);
 //    System.out.println("RegexPluginConfig.readConfig " + this);
   }
 
   private int readIntOption(final Element e, final String name, final int defaultValue) {
     Iterator i = e.getChildren("option").iterator();
     while (i.hasNext()) {
-      final Element option = (Element)i.next();
+      final Element option = (Element) i.next();
       if (option.getAttributeValue("name").equals(name)) {
         return Integer.parseInt(option.getAttributeValue("value"));
       }
@@ -80,8 +89,8 @@ public class RegexPluginConfig {
   private boolean readBooleanOption(final Element e, final String name, final boolean defaultValue) {
     Iterator i = e.getChildren("option").iterator();
     while (i.hasNext()) {
-      final Element option = (Element)i.next();
-      if (option.getAttributeValue("name").equals(name)){
+      final Element option = (Element) i.next();
+      if (option.getAttributeValue("name").equals(name)) {
         return Boolean.valueOf(option.getAttributeValue("value")).booleanValue();
       }
     }
@@ -103,6 +112,7 @@ public class RegexPluginConfig {
       prefs.putBoolean("autoUpdate", autoUpdate);
       prefs.putBoolean("referenceOn", referenceOn);
       prefs.putInt("referencePos", referencePos);
+      prefs.putBoolean("showLabels", showLabels);
     } catch (Exception e) {
       Utils.handleException("error.savingPreferences", e);
     }
@@ -121,9 +131,9 @@ public class RegexPluginConfig {
       pos4 = prefs.getInt("pos4", pos4);
       pos5 = prefs.getInt("pos5", pos5);
       autoUpdate = prefs.getBoolean("autoUpdate", autoUpdate);
-
       referenceOn = prefs.getBoolean("referenceOn", referenceOn);
       referencePos = prefs.getInt("referencePos", referencePos);
+      showLabels = prefs.getBoolean("showLabels", showLabels);
     } catch (Exception e) {
       Utils.handleException("error.loadingPreferences", e);
     }

@@ -1,10 +1,12 @@
 <project default="help" basedir="..">
   <!-- Cleanup classes and build directory, create all directories -->
-  <target name="prepare">
+    <property name="plugin.home" value=""/>
+    <target name="prepare">
     <condition property="project.external.config">
-      <and>
-        <available file="${idea.home}" type="dir"/>
-      </and>
+        <and>
+            <available file="${idea.home}" type="dir"/>
+            <available file="${plugin.home}" type="dir"/>
+        </and>
     </condition>
     <fail unless="project.external.config">
       External properties not set or have wrong values
@@ -13,6 +15,7 @@
         idea.home    contains full path to IntelliJ idea home directory.
       Currently properties is:
       idea.home = ${idea.home}
+      plugin.home = ${plugin.home}
     </fail>
 
     <property name="project.ant" value="ant"/>
@@ -233,7 +236,7 @@
   <!-- Coping binaries to IntelliJ plugins folder -->
   <target name="install" depends="binaries">
     <!-- Please change folder if you are using different folder for yor installation -->
-    <copy todir="${idea.home}/plugins" overwrite="true">
+    <copy todir="${plugin.home}/plugins" overwrite="true">
       <fileset dir="${project.build}">
         <include name="${project.name}/**/*.*"/>
       </fileset>

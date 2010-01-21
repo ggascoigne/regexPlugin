@@ -8,7 +8,9 @@ import regexPlugin.actions.IdeaAction;
 import regexPlugin.actions.IdeaMenuAction;
 import regexPlugin.ui.Resources;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPopupMenu;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,12 +30,19 @@ public class Idea extends ComponentFactory {
   }
 
   public JComponent getComponent(String name, Object group, boolean horizontal) {
-    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(name, (ActionGroup) group, horizontal);
+    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(
+      name, (ActionGroup) group, horizontal);
     return actionToolbar.getComponent();
   }
 
   public Object createToggleAction(GenericToggleAction action) {
     return new ToggleActionAdapter(action);
+  }
+
+  public Object createToggleMenuAction(GenericToggleAction action) {
+    final ToggleActionAdapter taa =  new ToggleActionAdapter(action);
+    taa.setSelected(null, action.isSelected());
+    return taa;
   }
 
   protected JPopupMenu createPopup(String name, List actions) {
@@ -82,6 +91,10 @@ public class Idea extends ComponentFactory {
 
     public void setSelected(AnActionEvent event, boolean b) {
       action.setSelected(b);
+    }
+
+    public boolean displayTextInToolbar() {
+      return action.showDescription();
     }
   }
 

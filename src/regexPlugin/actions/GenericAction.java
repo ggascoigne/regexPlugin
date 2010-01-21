@@ -21,11 +21,11 @@ public abstract class GenericAction {
 
   public abstract void perform();
 
-  public String getLabel() {
+  public String getName() {
     return Resources.getLabel(m_key);
   }
 
-  public String getShortDescription() {
+  public String getDescription() {
     return Resources.getTooltip(m_key);
   }
 

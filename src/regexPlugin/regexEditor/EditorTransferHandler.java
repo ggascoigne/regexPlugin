@@ -3,11 +3,20 @@ package regexPlugin.regexEditor;
 import regexPlugin.MatchAction;
 import regexPlugin.actions.Regex2JavaString;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
 import javax.swing.text.JTextComponent;
-import java.awt.datatransfer.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.im.InputContext;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
 
 public class EditorTransferHandler extends TransferHandler {
   private static final int BUF_SIZE = 1024;
@@ -19,9 +28,7 @@ public class EditorTransferHandler extends TransferHandler {
   }
 
   public void exportToClipboard(JComponent comp, Clipboard clip, int action) {
-    clip.setContents(new StringSelection(Regex2JavaString.quote(((RegexEditor) comp).getText(),
-      fAction.getFlags())),
-      null);
+    clip.setContents(new RegexSelection(((RegexEditor) comp).getSelectedText(), fAction.getFlags()), null);
   }
 
   public boolean importData(JComponent comp, Transferable t) {
@@ -39,15 +46,59 @@ public class EditorTransferHandler extends TransferHandler {
     return false;
   }
 
+  // The trick here is to provide a default access that convert the regex to a java string, but provide
+  // an undecorated version that can be pasted back into the editor again without being mucked with.
+  public static class RegexSelection implements Transferable {
+    static final DataFlavor regexFlavor = new DataFlavor(RegexSelection.class, "regex");
+
+    DataFlavor flavors[] = {DataFlavor.stringFlavor, regexFlavor};
+
+    private String data;
+    private int flags;
+
+    public RegexSelection(String data, int flags) {
+      this.data = data;
+      this.flags = flags;
+    }
+
+    public DataFlavor[] getTransferDataFlavors() {
+      return flavors;
+    }
+
+    public boolean isDataFlavorSupported(DataFlavor flavor) {
+      for (int i = 0; i < flavors.length; i++) {
+        final DataFlavor dataFlavor = flavors[i];
+        if (dataFlavor.equals(flavor))
+          return true;
+      }
+      return false;
+    }
+
+    // Returns Image object housed by Transferable object
+    public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+      if (!isDataFlavorSupported(flavor)) {
+        throw new UnsupportedFlavorException(flavor);
+      }
+      if (flavor.equals(regexFlavor))
+        return data;
+      else
+        return Regex2JavaString.quote(data, flags);
+    }
+  }
+
   private String extractTextFromFlavor(final DataFlavor flavor, final Transferable t) {
     String text = "";
     try {
       if (flavor.isRepresentationClassInputStream()) {
-        final InputStream is = (InputStream) t.getTransferData(flavor);
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        final char[] ca = new char[is.available()];
-        reader.read(ca, 0, is.available());
-        text = new String(ca);
+        try {
+          final InputStream is = (InputStream) t.getTransferData(flavor);
+          final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+          final char[] ca = new char[is.available()];
+          reader.read(ca, 0, is.available());
+          text = new String(ca);
+        } catch (ClassCastException e) {
+          //System.out.println("flavor" + flavor + "not accessible as InputStream");
+        }
       } else if (flavor.isRepresentationClassReader()) {
         final Reader reader = (Reader) t.getTransferData(flavor);
 
@@ -60,11 +111,17 @@ public class EditorTransferHandler extends TransferHandler {
         }
         text = tmpWriter.getBuffer().toString();
       } else if (flavor.isRepresentationClassCharBuffer() || flavor.isRepresentationClassByteBuffer() ||
-        flavor.isRepresentationClassSerializable()) {
-        text = (String) t.getTransferData(flavor);
+        flavor.isRepresentationClassSerializable() || (flavor.equals(RegexSelection.regexFlavor))) {
+        try {
+          text = (String) t.getTransferData(flavor);
+        } catch (ClassCastException e) {
+          //System.out.println("flavor" + flavor + "not accessible as String");
+        }
       }
     } catch (UnsupportedFlavorException ufe) {
+      System.out.println("UnsupportedFlavorException");
     } catch (IOException ioe) {
+      System.out.println("IOException");
     }
     return text;
   }
@@ -87,6 +144,15 @@ public class EditorTransferHandler extends TransferHandler {
       //  System.out.println("flavors[" + counter + "]" + flavors[counter]);
       //  System.out.println("text = " + extractTextFromFlavor(flavors[counter], t));
       //}
+
+      // Look for out regex flavor first
+      for (int counter = 0; counter < flavors.length; counter++) {
+        if (flavors[counter].equals(RegexSelection.regexFlavor)) {
+          return flavors[counter];
+        }
+      }
+
+      // if we can't find one then fall back on string instead.
       for (int counter = 0; counter < flavors.length; counter++) {
         if (flavors[counter].equals(DataFlavor.stringFlavor)) {
           return flavors[counter];

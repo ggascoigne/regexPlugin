@@ -4,15 +4,10 @@ import regexPlugin.IconCache;
 import regexPlugin.MatchAction;
 import regexPlugin.RegexPluginConfig;
 
-public class ReplaceAllAction extends GenericToggleAction {
-
-  private RegexPluginConfig fConfig;
-  private MatchAction fAction;
+public class ReplaceAllAction extends MatchToggleAction {
 
   public ReplaceAllAction(MatchAction action, IconCache icons, RegexPluginConfig config) {
-    super("replaceAll", icons.getIcon("replaceall.png"));
-    fConfig = config;
-    fAction = action;
+    super(null, "replaceAll", icons.getIcon("replaceall.png"), action, config);
   }
 
   public boolean isSelected() {
@@ -21,16 +16,11 @@ public class ReplaceAllAction extends GenericToggleAction {
 
   public void setSelected(boolean b) {
     fAction.setReplaceAll(b);
-    fireAction();
+    perform();
   }
 
-  public void fireAction() {
-    fireAction(fConfig.isAutoUpdateEnabled());
+  public boolean showDescription() {
+    return fConfig.showLabels;
   }
 
-  public void fireAction(boolean force) {
-    if (force == true) {
-      fAction.perform();
-    }
-  }
 }

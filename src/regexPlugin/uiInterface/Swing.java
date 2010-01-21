@@ -7,7 +7,11 @@ import regexPlugin.ui.MenuEx;
 import regexPlugin.ui.Resources;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -30,7 +34,26 @@ public class Swing extends ComponentFactory {
 
   public Object createToggleAction(GenericToggleAction a) {
     return new ToggleButton(a);
-    //return new CheckboxToggleButton(a);
+  }
+
+  class ToggleMenuItem extends JCheckBoxMenuItem implements ItemListener {
+    final private GenericToggleAction fAction;
+
+    public ToggleMenuItem(GenericToggleAction action) {
+      super(new GenericAction2AbstractAction(action));
+      fAction = action;
+      setToolTipText(action.getDescription());
+      addItemListener(this);
+      setState(action.isSelected());
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+      fAction.setSelected(isSelected());
+    }
+  }
+
+  public Object createToggleMenuAction(final GenericToggleAction action) {
+    return new ToggleMenuItem(action);
   }
 
   public void addToGroup(Object group, Object something) {
@@ -54,7 +77,7 @@ public class Swing extends ComponentFactory {
   }
 
   private Icon createIconWithBorder(Icon icon, int iconSize) {
-    if ( icon == null )
+    if (icon == null)
       return null;
 
     int iconWidth = icon.getIconWidth();
@@ -96,9 +119,9 @@ public class Swing extends ComponentFactory {
     private GenericAction a;
 
     public GenericAction2AbstractAction(GenericAction a) {
-      super(a.getLabel(), createIconWithBorder(a.getIcon(), ICON_SIZE) );
+      super(a.getName(), createIconWithBorder(a.getIcon(), ICON_SIZE));
       this.a = a;
-      putValue(SHORT_DESCRIPTION, a.getShortDescription());
+      putValue(SHORT_DESCRIPTION, a.getDescription());
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -119,7 +142,6 @@ public class Swing extends ComponentFactory {
     public void itemStateChanged(ItemEvent e) {
       fAction.setSelected(isSelected());
     }
-
   }
 
   class ToggleButton extends JCheckBox implements ItemListener {
@@ -131,23 +153,30 @@ public class Swing extends ComponentFactory {
 
       Icon normalIcon = createIconWithBorder(a.getIcon(), ICON_SIZE);
       setIcon(normalIcon);
-      setMargin( new Insets(0,0,0,0) );
+      setMargin(new Insets(0, 0, 0, 0));
 
-      Icon rolloverIcon = createAnotherIcon(normalIcon, new Color( 181, 190, 214 ));
+      Icon rolloverIcon = createAnotherIcon(normalIcon, new Color(181, 190, 214));
       setRolloverIcon(rolloverIcon);
       setRolloverSelectedIcon(rolloverIcon);
-      setSelectedIcon(createAnotherIcon(normalIcon, new Color( 130, 146, 185 )));
+      setSelectedIcon(createAnotherIcon(normalIcon, new Color(130, 146, 185)));
 
+      if (action.showDescription()) {
+        setText(a.getName());
+        // if we're going to use the name on the button then we need to get a border otherwise
+        // the toolbar gets very hard to read.
+        setBorderPainted(true);
+      }
       setToolTipText(a.getDescription());
+
       addItemListener(this);
     }
 
-//    public Dimension getMinimumSize() {
-//      Dimension minimumSize = super.getMinimumSize();
-//      return new Dimension(minimumSize.width + 6, minimumSize.height + 6);
-//    }
+    //public Dimension getMinimumSize() {
+    //  Dimension minimumSize = super.getMinimumSize();
+    //  return new Dimension(minimumSize.width + 6, minimumSize.height + 6);
+    //}
 
-    private Icon createAnotherIcon(Icon icon, Color color ) {
+    private Icon createAnotherIcon(Icon icon, Color color) {
       if (icon == null) return null;
       int iconWidth = icon.getIconWidth();
       int iconHeight = icon.getIconHeight();
@@ -156,7 +185,7 @@ public class Swing extends ComponentFactory {
       g.setColor(color);
       g.fillRect(0, 0, iconWidth, iconHeight);
       g.setColor((Color.BLACK));
-      g.drawRect(0, 0, iconWidth-1, iconHeight-1);
+      g.drawRect(0, 0, iconWidth - 1, iconHeight - 1);
       icon.paintIcon(null, g, 0, 0);
       return new ImageIcon(i);
     }

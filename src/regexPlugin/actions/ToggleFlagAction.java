@@ -4,15 +4,11 @@ import regexPlugin.IconCache;
 import regexPlugin.MatchAction;
 import regexPlugin.RegexPluginConfig;
 
-public class ToggleFlagAction extends GenericToggleAction {
+public class ToggleFlagAction extends MatchToggleAction {
   private final int flag;
-  private final MatchAction fAction;
-  private final RegexPluginConfig fConfig;
 
   public ToggleFlagAction(final String key, final String iconResource, final int flag, final MatchAction action, IconCache iconCache, RegexPluginConfig config) {
-    super(key, iconCache.getIcon(iconResource));
-    fAction = action;
-    fConfig = config;
+    super(null, key, iconCache.getIcon(iconResource), action, config);
     this.flag = flag;
   }
 
@@ -22,16 +18,11 @@ public class ToggleFlagAction extends GenericToggleAction {
 
   public void setSelected(boolean b) {
     fAction.setFlag(flag, b);
-    fireAction();
+    perform();
   }
 
-  public void fireAction() {
-    fireAction(fConfig.isAutoUpdateEnabled());
+  public boolean showDescription() {
+    return fConfig.showLabels;
   }
 
-  public void fireAction(boolean force) {
-    if (force == true) {
-      fAction.perform();
-    }
-  }
 }

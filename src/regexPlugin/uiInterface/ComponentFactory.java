@@ -19,14 +19,16 @@ public abstract class ComponentFactory {
     entries.add(createSubMenu("editMenu", actions));
 
     actions.clear();
+    actions.add(new NewLibraryEntryAction(panel));
     actions.add(new DeleteCurrentLibraryEntryAction(panel));
     actions.add(new ImportLibraryAction(panel));
     actions.add(new ExportLibraryAction(panel));
     entries.add(createSubMenu("libMenu", actions));
 
-    entries.add(createGenericActionMenuAdapter(new ShowHtmlAction(panel, "about", "/help/About.html")));
+    entries.add( createToggleMenuAction( new ToggleLabelsAction(panel)));
+
     entries.add(createGenericActionMenuAdapter(new ShowHtmlAction(panel, "help", "/help/help.html")));
-    entries.add(createGenericActionMenuAdapter(new ShowHtmlAction(panel, "reference", "/help/reference.html")));
+    entries.add(createGenericActionMenuAdapter(new ShowHtmlAction(panel, "about", "/help/About.html")));
 
     return createPopup("RegexPopup", entries);
   }
@@ -44,6 +46,8 @@ public abstract class ComponentFactory {
   public abstract Object createMenuAction(RegexPanel panel, Icon i, JPopupMenu popup);
 
   public abstract Object createToggleAction(GenericToggleAction action);
+
+  public abstract Object createToggleMenuAction(GenericToggleAction action);
 
   public abstract void addToGroup(Object group, Object something);
 

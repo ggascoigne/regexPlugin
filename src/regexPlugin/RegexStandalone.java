@@ -5,6 +5,7 @@ import regexPlugin.uiInterface.Swing;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.Color;
 import java.awt.Font;
@@ -24,6 +25,7 @@ public class RegexStandalone {
     UIManager.put("CheckBox.font", labelFont);
     UIManager.put("Button.font", labelFont);
     UIManager.put("Menu.font", labelFont);
+    UIManager.put("CheckBoxMenuItem.font", labelFont);
     UIManager.put("MenuItem.font", labelFont);
     UIManager.put("ComboBox.font", labelFont);
     UIManager.put("TitledBorder.font", labelFont);
@@ -38,28 +40,34 @@ public class RegexStandalone {
 
   public void show() {
     m_mainWin = new JFrame(Resources.getTitle("standAlone"));
-    try {
-      m_panel = new RegexPanel(getConfig(), new Swing());
-      m_mainWin.getContentPane().add(m_panel);
-      synchronized (LibraryManager.m_Lock) {
-        m_mainWin.pack();
-        m_mainWin.setBounds(m_prefs.getInt("x", 10),
-          m_prefs.getInt("y", 10),
-          m_prefs.getInt("width", 933),
-          m_prefs.getInt("height", 428));
-        m_mainWin.setVisible(true);
-      }
-      m_mainWin.addWindowListener(
-        new WindowAdapter() {
-          public void windowClosing(final WindowEvent e) {
-            saveConfig();
-            m_panel.saveLibrary();
-            System.exit(0);
+    // make sure that ALL swing related actions start from the event dispatcher thread.
+    // stops a race condition (NPE) upon startup.
+    SwingUtilities.invokeLater( new Runnable() {
+      public void run() {
+        try {
+          m_panel = new RegexPanel(getConfig(), new Swing());
+          m_mainWin.getContentPane().add(m_panel);
+          synchronized (LibraryManager.m_Lock) {
+            m_mainWin.pack();
+            m_mainWin.setBounds(m_prefs.getInt("x", 10),
+              m_prefs.getInt("y", 10),
+              m_prefs.getInt("width", 933),
+              m_prefs.getInt("height", 428));
+            m_mainWin.setVisible(true);
           }
-        });
-    } catch (Exception e) {
-      Utils.handleException("error.panelStartup",e);
-    }
+          m_mainWin.addWindowListener(
+            new WindowAdapter() {
+              public void windowClosing(final WindowEvent e) {
+                saveConfig();
+                m_panel.saveLibrary();
+                System.exit(0);
+              }
+            });
+        } catch (Exception e) {
+          Utils.handleException("error.panelStartup",e);
+        }
+      }
+    } );
   }
 
   private void saveConfig() {

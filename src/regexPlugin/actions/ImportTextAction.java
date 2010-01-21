@@ -17,7 +17,7 @@ public class ImportTextAction extends GenericAction {
   private JTextComponent text;
 
   public ImportTextAction(final RegexPanel panel) {
-    super(panel, "ImportTextAction.chooseTextImportFile", null);
+    super(panel, "ImportTextAction.chooseTextImportFile", panel.getIconCache().getIcon("open.png"));
     this.text = panel.getTextComponent();
   }
 

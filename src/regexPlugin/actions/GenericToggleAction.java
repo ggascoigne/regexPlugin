@@ -1,31 +1,20 @@
 package regexPlugin.actions;
 
-import regexPlugin.MatchAction;
-import regexPlugin.RegexPluginConfig;
-import regexPlugin.ui.Resources;
+import regexPlugin.RegexPanel;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
-public abstract class GenericToggleAction {
-
-  private Icon icon;
-  private String key;
-
-  protected GenericToggleAction(final String key, final Icon icon) {
-    this.key = key;
-    this.icon = icon;
+public abstract class GenericToggleAction extends GenericAction {
+  //protected GenericToggleAction(final String key, final Icon icon) {
+  //  super(null, key, icon);
+  //}
+  //
+  protected GenericToggleAction(final RegexPanel panel, final String key, final Icon icon) {
+    super(panel, key, icon);
   }
 
-  public String getName() {
-    return Resources.getLabel(key);
-  }
-
-  public String getDescription() {
-    return Resources.getTooltip(key);
-  }
-
-  public Icon getIcon() {
-    return icon;
+  public boolean showDescription() {
+    return false;
   }
 
   public abstract boolean isSelected();

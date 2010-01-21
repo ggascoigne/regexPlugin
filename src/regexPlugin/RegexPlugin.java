@@ -10,6 +10,9 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
 import regexPlugin.uiInterface.Idea;
 
+import javax.swing.UIManager;
+import java.awt.Font;
+
 public class RegexPlugin implements ProjectComponent, JDOMExternalizable {
 
   private static final String REGEX_PLUGIN_ID = "Regex";
@@ -22,6 +25,7 @@ public class RegexPlugin implements ProjectComponent, JDOMExternalizable {
 
   public RegexPlugin(final Project project) {
     fProject = project;
+    UIManager.put("TextArea.font", new Font("Monospaced", Font.PLAIN, 11));
   }
 
   public void projectOpened() {

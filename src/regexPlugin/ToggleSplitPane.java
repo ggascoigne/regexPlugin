@@ -2,8 +2,10 @@ package regexPlugin;
 
 import regexPlugin.actions.GenericToggleAction;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import java.awt.BorderLayout;
 
 public class ToggleSplitPane extends JPanel {
   private JComponent fFirst;
@@ -15,23 +17,33 @@ public class ToggleSplitPane extends JPanel {
   public ToggleSplitPane(JComponent first, JComponent optional, IconCache iconCache) {
     fFirst = first;
     fOptional = optional;
-    fToggleAction = new GenericToggleAction("referenceOptional", iconCache.getIcon("reference.png")) {
+    fToggleAction = new GenericToggleAction(null,"referenceOptional", iconCache.getIcon("reference.png")) {
       public boolean isSelected() {
         return fOptionalOn;
       }
+
       public void setSelected(boolean b) {
         setOptional(b);
       }
+
+      public void perform() {
+        //not used
+      }
     };
     setLayout(new BorderLayout());
-    initChilds();
+    initChildren();
   }
 
-  private void initChilds() {
+  private void initChildren() {
     removeAll();
 
     if (fOptionalOn) {
-      fSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, fFirst, fOptional);
+      fSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, false, fFirst, fOptional);
+      fSplitter.setBorder(null);
+      // set this to 8, the default is far too large
+      fSplitter.setDividerSize(8);
+      fSplitter.setOneTouchExpandable(true);
+
       add(fSplitter);
     } else {
       add(fFirst);
@@ -53,7 +65,7 @@ public class ToggleSplitPane extends JPanel {
 
   public void setOptional(boolean referenceOn) {
     fOptionalOn = referenceOn;
-    initChilds();
+    initChildren();
   }
 
   public void setDividerLocation(int referencePos) {

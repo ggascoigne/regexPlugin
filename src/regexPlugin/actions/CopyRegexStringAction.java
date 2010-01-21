@@ -21,7 +21,7 @@ public class CopyRegexStringAction extends GenericAction {
   private JTextComponent m_pattern;
 
   public CopyRegexStringAction(final RegexPanel panel) {
-    super(panel, "copyRegexString", null);
+    super(panel, "copyRegexString", panel.getIconCache().getIcon("copy.png"));
     m_pattern = panel.getPatternComponent();
     m_anAction = panel.getMatchAction();
   }

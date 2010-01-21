@@ -44,6 +44,9 @@ public class RegexPanel extends JPanel {
   private RegexPluginConfig config;
   private IconCache iconCache = new IconCache();
   private ToggleSplitPane fTogglePane;
+  private JComponent fToolbar;
+
+  public static final String EVENT_SHOW_LABELS = "showLabels";
 
   public RegexPanel(final RegexPluginConfig config,
                     final ComponentFactory factory) throws Exception {
@@ -79,7 +82,8 @@ public class RegexPanel extends JPanel {
 
     setDividerPositions(config);
 
-    mainPanel.add(createToolbar(), BorderLayout.PAGE_START);
+    fToolbar = createToolbar();
+    mainPanel.add(fToolbar, BorderLayout.PAGE_START);
     mainPanel.add(fTogglePane, BorderLayout.CENTER);
 
     add(mainPanel, BorderLayout.CENTER);
@@ -91,6 +95,8 @@ public class RegexPanel extends JPanel {
             libraryManager.deleted((String) event.getBody());
           } else if (LibraryManager.EVENT_IMPORT.equals(event.getMessage())) {
             libraryManager.imported();
+          } else if (LibraryManager.EVENT_NEW.equals(event.getMessage())) {
+            libraryManager.newed();
           }
         } else if (event.getSource() != libraryManager) {
           if (LibraryManager.EVENT_SAVE.equals(event.getMessage())) {
@@ -99,11 +105,27 @@ public class RegexPanel extends JPanel {
             }
           }
         }
+
+        if (event.getSource() == EventManager.getGlobalTarget()) {
+          if ( RegexPanel.EVENT_SHOW_LABELS.equals(event.getMessage())) {
+            if ( getConfig().showLabels != ((Boolean)event.getBody()).booleanValue() ) {
+              getConfig().showLabels = ((Boolean)event.getBody()).booleanValue();
+              invalidateToolbar();
+              // take this out one day if we work out how.
+              JOptionPane.showMessageDialog(mainPanel, Resources.getInstance().getString("showLabels.restartNeeded"));
+            }
+          }
+        }
       }
     };
 
     EventManager.getInstance().addObjectListener(libraryManager.getClass(), eventHandler);
     EventManager.getInstance().addObjectListener(EventManager.getGlobalTarget(), eventHandler);
+  }
+
+  private void invalidateToolbar()
+  {
+    fToolbar.invalidate();
   }
 
   public void disposeComponent() {
@@ -236,7 +258,7 @@ public class RegexPanel extends JPanel {
     Object group = uiFactory.createGroup("regexactiongroup");
     uiFactory.addToGroup(group,
       uiFactory.createMenuAction(this, iconCache.getIcon("menu.png"), uiFactory.createRegexPopupMenu(this)));
-    addToggleAction(group, new ToggleAutoUpdateAction(config, fMatchAction, iconCache));
+    addToggleAction(group, new ToggleAutoUpdateAction(fMatchAction, iconCache, config));
     addToggleFlagAction(group, "comments", "comment.png", Pattern.COMMENTS);
     addToggleFlagAction(group, "caseInsensitive", "casesensitiv.png", Pattern.CASE_INSENSITIVE);
     addToggleFlagAction(group, "multiline", "multiline.png", Pattern.MULTILINE);
@@ -244,6 +266,8 @@ public class RegexPanel extends JPanel {
     addToggleAction(group, new ReplaceAllAction(fMatchAction, iconCache, config));
     addToggleAction(group, fTogglePane.getToggleAction());
     addAction(group, fMatchAction);
+    addAction(group, new NewLibraryEntryAction(this));
+    addAction(group, new DeleteCurrentLibraryEntryAction(this));
 
     JComponent toolbar = uiFactory.getComponent("regextoolbar", group, true);
 
@@ -364,6 +388,10 @@ public class RegexPanel extends JPanel {
     return libraryManager.getCurrentLibraryName();
   }
 
+  public IconCache getIconCache() {
+    return iconCache;
+  }
+
   public void clearFields() {
     getPatternComponent().setText("");
     getTextComponent().setText("");
@@ -374,14 +402,16 @@ public class RegexPanel extends JPanel {
   }
 
   public RegexPluginConfig getConfig() {
-    return new RegexPluginConfig(upperPane.getDividerLocation(),
+    config.update(upperPane.getDividerLocation(),
       lowerPane.getDividerLocation(),
       leftPane.getDividerLocation(),
       midPane.getDividerLocation(),
       replacePane.getDividerLocation(),
       config.autoUpdate,
       fTogglePane.isOptionalOn(),
-      fTogglePane.getDividerPos());
+      fTogglePane.getDividerPos(),
+      config.showLabels);
+    return config;
   }
 
   private void setDividerPositions(final RegexPluginConfig config) {
