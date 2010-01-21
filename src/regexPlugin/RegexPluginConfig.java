@@ -4,8 +4,10 @@ import org.jdom.Element;
 
 import java.util.Iterator;
 import java.util.prefs.Preferences;
+import java.awt.Dimension;
 
 public class RegexPluginConfig {
+  private boolean initialized = false;
   public int pos1 = 218;
   public int pos2 = 218;
   public int pos3 = 162;
@@ -73,6 +75,10 @@ public class RegexPluginConfig {
     referencePos = readIntOption(e, "referencePos", referencePos);
     showLabels = readBooleanOption(e, "showLabels", showLabels);
 //    System.out.println("RegexPluginConfig.readConfig " + this);
+
+    // simple sanity check
+    if ( referencePos > pos1 )
+      initialized = true;
   }
 
   private int readIntOption(final Element e, final String name, final int defaultValue) {
@@ -134,6 +140,9 @@ public class RegexPluginConfig {
       referenceOn = prefs.getBoolean("referenceOn", referenceOn);
       referencePos = prefs.getInt("referencePos", referencePos);
       showLabels = prefs.getBoolean("showLabels", showLabels);
+      // simple sanity check
+      if ( referencePos > pos1 )
+        initialized = true;
     } catch (Exception e) {
       Utils.handleException("error.loadingPreferences", e);
     }
@@ -141,5 +150,21 @@ public class RegexPluginConfig {
 
   public boolean isAutoUpdateEnabled() {
     return autoUpdate;
+  }
+
+  public boolean initializeSize(Dimension size, boolean force) {
+    if ( ! initialized  || force )
+    {
+      if ( size.width != 0 && size.height != 0 )
+      {
+        pos1 = pos2 = size.width / 3;
+        pos3 = pos5 = size.height / 2;
+        pos4 = pos1 * 2;
+        referencePos = pos4 + (size.width / 6 );
+        initialized = true;
+        return true;
+      }
+    }
+    return false;
   }
 }

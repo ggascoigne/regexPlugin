@@ -13,6 +13,7 @@ public class ToggleSplitPane extends JPanel {
   private boolean fOptionalOn = false;
   private JSplitPane fSplitter;
   private GenericToggleAction fToggleAction;
+  private int fDesiredPosition = 0;
 
   public ToggleSplitPane(JComponent first, JComponent optional, IconCache iconCache) {
     fFirst = first;
@@ -35,6 +36,9 @@ public class ToggleSplitPane extends JPanel {
   }
 
   private void initChildren() {
+    if ( fOptionalOn && fSplitter != null ) {
+      fDesiredPosition = fSplitter.getDividerLocation();
+    }
     removeAll();
 
     if (fOptionalOn) {
@@ -43,6 +47,8 @@ public class ToggleSplitPane extends JPanel {
       // set this to 8, the default is far too large
       fSplitter.setDividerSize(8);
       fSplitter.setOneTouchExpandable(true);
+      if ( fDesiredPosition != 0 )
+        fSplitter.setDividerLocation(fDesiredPosition);
 
       add(fSplitter);
     } else {
@@ -71,6 +77,9 @@ public class ToggleSplitPane extends JPanel {
   public void setDividerLocation(int referencePos) {
     if (fSplitter != null) {
       fSplitter.setDividerLocation(referencePos);
+    }
+    else {
+      fDesiredPosition = referencePos;
     }
   }
 

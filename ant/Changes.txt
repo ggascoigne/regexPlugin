@@ -1,3 +1,37 @@
+Version 0.6.0
+
+- Fix plugin so that it saves its state to the workspace rather
+  than the project file.
+- Added toolbar buttons to create a new regex and delete the
+  current one.  This makes the library handling a little more
+  convenient.
+- Fixed the copy code so that it it copies that part of the regular
+  expression that has been selected.
+- Changed the way copy and paste happens in the regex editor so
+  that you can copy segments of the regular expression and paste
+  them back to the editor without having them changed to java
+  strings.
+- Fixed the fonts used in the plugin so that they are fixed pitch
+  again (I think that one of the IntelliJ IDEA releases changed the
+  default here).
+- Added the option to show labels for the toolbar buttons that
+  refer to regex flags.  I can never keep track of which icon
+  represents which completely abstract concept.  This is a menu
+  option.  I wasn't able to work out how best to do this
+  dynamically so right now you have to restart so see this change.
+- Changed the reference card pane so that there are closers on the
+  splitter again.
+- Removed the popup reference window. I really don't think that it
+  was useful particularly because it can go behind the main IDEA
+  window.
+- Fixed a race condition (null pointer exception) in the stand
+  alone swing app.
+- Added icons to menu.
+
+Version 0.5.9
+- dockable reference card in addition to the popup
+- ctrl-c in regexeditor copies the regex as java string
+
 Version 0.5.8
 - dockable reference card in addition to the popup
 - ctrl-c in regexeditor copies the regex as java string

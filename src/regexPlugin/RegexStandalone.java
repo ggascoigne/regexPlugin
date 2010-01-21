@@ -54,6 +54,7 @@ public class RegexStandalone {
               m_prefs.getInt("width", 933),
               m_prefs.getInt("height", 428));
             m_mainWin.setVisible(true);
+            m_panel.initializeDividerPositions( m_prefs.getInt( "pos1", 0) == 0 );
           }
           m_mainWin.addWindowListener(
             new WindowAdapter() {

@@ -80,6 +80,8 @@ public class RegexPanel extends JPanel {
 
     final JPanel mainPanel = new JPanel(new BorderLayout());
 
+    config.initializeSize( getSize(), false );
+
     setDividerPositions(config);
 
     fToolbar = createToolbar();
@@ -426,4 +428,13 @@ public class RegexPanel extends JPanel {
     fTogglePane.setDividerLocation(config.referencePos);
   }
 
+  public void doLayout() {
+    initializeDividerPositions( false);
+    super.doLayout();
+  }
+
+  public void initializeDividerPositions( boolean force ) {
+    if ( config.initializeSize( getSize(), force  ) )
+      setDividerPositions(config);
+  }
 }
