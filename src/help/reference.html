@@ -211,22 +211,22 @@
   </tr>
   <tr>
     <td valign="top" ><tt>\p{InGreek}</tt></td>
-    <td >block</a>)</td>
+    <td>A character in the Greek&nbsp;block (simple block)</td>
   </tr>
   <tr>
-    <td valign="top" ><tt>\p{Lu}</tt></td>
-    <td >category</a>)</td>
+    <td valign="top"><tt>\p{Lu}</tt></td>
+    <td >An uppercase letter (simple category)</td>
   </tr>
   <tr>
-    <td valign="top" ><tt>\p{Sc}</tt></td>
+    <td valign="top"><tt>\p{Sc}</tt></td>
     <td >A currency symbol</td>
   </tr>
   <tr>
-    <td valign="top" ><tt>\P{InGreek}</tt></td>
+    <td valign="top"><tt>^\P{InGreek}</tt></td>
     <td >Any character except one in the Greek block (negation)</td>
   </tr>
   <tr>
-    <td valign="top" ><tt>[\p{L}&&[^\p{Lu}]]&nbsp;</tt></td>
+    <td valign="top"><tt>[\p{L}&&[^\p{Lu}]]&nbsp;</tt></td>
     <td >Any letter except an uppercase letter (subtraction)</td>
   </tr>
   <tr>
@@ -591,7 +591,7 @@ zero denotes the entire pattern.</p>
   with hexadecimal value <tt>0x2014</tt>. <a name="ubc">
 <p>Unicode blocks and categories are written with the <tt>\p</tt> and <tt>\P</tt>
   constructs as in Perl. <tt>\p{</tt><i>prop</i><tt>}</tt> matches if the input
-  has the property <i>prop</i>, while \P{</tt><i>prop</i><tt>}</tt> does not match
+  has the property <i>prop</i>, while <tt>\P{</tt><i>prop</i><tt>}</tt> does not match
   if the input has that property. Blocks are specified with the prefix <tt>In</tt>,
   as in <tt>InMongolian</tt>. Categories may be specified with the optional prefix
   <tt>Is</tt>: Both <tt>\p{L}</tt> and <tt>\p{IsL}</tt> denote the category of
@@ -671,4 +671,4 @@ zero denotes the entire pattern.</p>
   please see "http://www.oreilly.com/catalog/regex2/" <i>Mastering Regular Expressions,
   2nd Edition</i>, Jeffrey E. F. Friedl, O'Reilly and Associates, 2002. </p>
 <p>This text is a subset of the Java 1.4 Pattern JavaDoc</p>
-
+</html>

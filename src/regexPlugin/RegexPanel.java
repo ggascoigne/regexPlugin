@@ -80,6 +80,8 @@ public class RegexPanel extends JPanel {
 
     final JPanel mainPanel = new JPanel(new BorderLayout());
 
+    config.initializeSize( getSize(), false );
+
     setDividerPositions(config);
 
     fToolbar = createToolbar();
@@ -263,6 +265,8 @@ public class RegexPanel extends JPanel {
     addToggleFlagAction(group, "caseInsensitive", "casesensitiv.png", Pattern.CASE_INSENSITIVE);
     addToggleFlagAction(group, "multiline", "multiline.png", Pattern.MULTILINE);
     addToggleFlagAction(group, "dotall", "dotall.png", Pattern.DOTALL);
+    addToggleFlagAction(group, "unicodeCase", "dotall.png", Pattern.UNICODE_CASE);
+    addToggleFlagAction(group, "cannonEq", "dotall.png", Pattern.CANON_EQ);
     addToggleAction(group, new ReplaceAllAction(fMatchAction, iconCache, config));
     addToggleAction(group, fTogglePane.getToggleAction());
     addAction(group, fMatchAction);
@@ -426,4 +430,13 @@ public class RegexPanel extends JPanel {
     fTogglePane.setDividerLocation(config.referencePos);
   }
 
+  public void doLayout() {
+    initializeDividerPositions( false);
+    super.doLayout();
+  }
+
+  public void initializeDividerPositions( boolean force ) {
+    if ( config.initializeSize( getSize(), force  ) )
+      setDividerPositions(config);
+  }
 }

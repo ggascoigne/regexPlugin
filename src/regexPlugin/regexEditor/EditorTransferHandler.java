@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 
+import com.intellij.openapi.editor.RawText;
+
 public class EditorTransferHandler extends TransferHandler {
   private static final int BUF_SIZE = 1024;
   private MatchAction fAction;
@@ -51,7 +53,11 @@ public class EditorTransferHandler extends TransferHandler {
   public static class RegexSelection implements Transferable {
     static final DataFlavor regexFlavor = new DataFlavor(RegexSelection.class, "regex");
 
-    DataFlavor flavors[] = {DataFlavor.stringFlavor, regexFlavor};
+    DataFlavor flavors[] = {
+      DataFlavor.stringFlavor,    // default decorated flavor
+      regexFlavor,                // raw regex flavor - used for internal pastes into the regex window
+      RawText.FLAVOR              // raw regex flavor (Idea specific) - used for paste-special in Idea to paste raw text
+    };
 
     private String data;
     private int flags;
@@ -79,8 +85,10 @@ public class EditorTransferHandler extends TransferHandler {
       if (!isDataFlavorSupported(flavor)) {
         throw new UnsupportedFlavorException(flavor);
       }
-      if (flavor.equals(regexFlavor))
+      if (flavor.equals(regexFlavor) )
         return data;
+      else if (flavor.equals(RawText.FLAVOR)) // allows paste-simple to work in Idea
+        return new RawText( data );
       else
         return Regex2JavaString.quote(data, flags);
     }
@@ -145,7 +153,7 @@ public class EditorTransferHandler extends TransferHandler {
       //  System.out.println("text = " + extractTextFromFlavor(flavors[counter], t));
       //}
 
-      // Look for out regex flavor first
+      // Look for our regex flavor first
       for (int counter = 0; counter < flavors.length; counter++) {
         if (flavors[counter].equals(RegexSelection.regexFlavor)) {
           return flavors[counter];

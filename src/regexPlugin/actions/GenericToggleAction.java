@@ -5,10 +5,6 @@ import regexPlugin.RegexPanel;
 import javax.swing.Icon;
 
 public abstract class GenericToggleAction extends GenericAction {
-  //protected GenericToggleAction(final String key, final Icon icon) {
-  //  super(null, key, icon);
-  //}
-  //
   protected GenericToggleAction(final RegexPanel panel, final String key, final Icon icon) {
     super(panel, key, icon);
   }
