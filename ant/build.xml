@@ -1,0 +1,245 @@
+<project default="help" basedir="..">
+  <!-- Cleanup classes and build directory, create all directories -->
+  <target name="prepare">
+    <condition property="project.external.config">
+      <and>
+        <available file="${idea.home}" type="dir"/>
+      </and>
+    </condition>
+    <fail unless="project.external.config">
+      External properties not set or have wrong values
+      This ant build must be run with -Didea.home=..
+      Where:
+        idea.home    contains full path to IntelliJ idea home directory.
+      Currently properties is:
+      idea.home = ${idea.home}
+    </fail>
+
+    <property name="project.ant" value="ant"/>
+    <property name="project.lib" value="lib"/>
+
+    <!-- Project name and version info -->
+    <property name="project.title" value="Regular Expression Explorer"/>
+    <property name="project.name" value="RegexPlugin"/>
+    <property name="plugin.vendor" value="Guy Gascoigne-Piggford &amp; Christian K&#xF6;stlin"/>
+    <property name="plugin.description" value="Allows you to experiment with Java regular expressions in a dynamic environment."/>
+    <property name="project.author" value="Guy Gascoigne-Piggford"/>
+    <property name="plugin.idea.version.min" value="3.0"/>
+    <property name="plugin.idea.version.max" value="4.1"/>
+    <property name="plugin.url" value="http://www.intellij.org/twiki/bin/view/Main/RegexPlugin"/>
+
+    <property name="project.src" value="src"/>
+    <property name="project.classes" value="classes"/>
+    <property name="project.build" value="build"/>
+    <property name="project.build.resources" value="${project.build}/resources"/>
+
+    <tstamp>
+      <format property="project.build.date" pattern="d-MMMM-yyyy HH:mm" locale="en"/>
+    </tstamp>
+
+    <!--<loadfile property="project.build.number" srcfile="${project.ant}/build.txt"/>-->
+
+    <!-- Project classpath -->
+    <path id="project.classpath">
+      <fileset dir="${basedir}">
+        <include name="${project.lib}/*.jar"/>
+      </fileset>
+      <fileset dir="${idea.home}">
+        <include name="lib/*.jar"/>
+      </fileset>
+    </path>
+
+    <!-- Project filter set -->
+    <filterset id="project.filter">
+      <filter token="project.name" value="${project.name}"/>
+      <filter token="project.author" value="${project.author}"/>
+      <!--<filter token="project.build.number" value="${project.build.number}"/>-->
+      <!--<filter token="project.build.date" value="${project.build.date}"/>-->
+    </filterset>
+
+    <delete quiet="true" includeemptydirs="true">
+      <fileset dir="${project.build}">
+        <include name="**/**"/>
+        <include name="**/*.*"/>
+      </fileset>
+    </delete>
+    <delete quiet="true" includeemptydirs="true">
+      <fileset dir="${project.classes}">
+        <include name="**/**"/>
+        <include name="**/*.*"/>
+      </fileset>
+    </delete>
+
+    <mkdir dir="${project.classes}"/>
+    <mkdir dir="${project.build}"/>
+    <mkdir dir="${project.build.resources}"/>
+    <mkdir dir="${project.build}/${project.name}"/>
+    <mkdir dir="${project.build}/${project.name}/lib"/>
+    <tstamp/>
+    <tstamp>
+      <format property="year" pattern="yyyy"/>
+    </tstamp>
+    <tstamp>
+      <format property="month" pattern="MM"/>
+    </tstamp>
+    <tstamp>
+      <format property="day" pattern="dd"/>
+    </tstamp>
+    <available property="version.exists" file="version.txt"/>
+    <antcall target="initVersion"/>
+  </target>
+
+  <target name="initVersion" unless="version.exists">
+    <antcall target="nextVersion"/>
+  </target>
+
+  <target name="nextVersion" description="Increment version number">
+    <propertyfile file="version.txt">
+      <entry key="version.major.number" type="int" default="0" operation="=" value="0"/>
+      <entry key="version.minor.number" type="int" default="0" operation="+" value="1"/>
+      <entry key="release.number" type="int" operation="=" value="1"/>
+      <entry key="build.number" type="int" operation="=" value="0"/>
+    </propertyfile>
+  </target>
+  <target name="nextRelease" description="Increment release number">
+    <propertyfile file="version.txt">
+      <entry key="release.number" type="int" default="0" operation="+" value="1"/>
+      <entry key="build.number" type="int" operation="=" value="0"/>
+    </propertyfile>
+  </target>
+  <target name="nextBuild" description="Increment build number">
+    <propertyfile file="version.txt">
+      <entry key="build.number" type="int" default="0" operation="+" value="1"/>
+    </propertyfile>
+  </target>
+
+  <!-- Help -->
+  <target name="help">
+    <echo>
+      ${ant.version} (JDK ${ant.java.version})
+      ${ant.file}:
+        javadoc   - Generate javadoc information for project
+        binaries  - Build plugin binaries
+        sources   - Archive sources package
+        all       - Build plugin binaries and source distributive
+    </echo>
+  </target>
+
+  <!-- Convert native files -->
+  <target name="native2ascii" depends="prepare">
+    <!-- Perform native conversion for 'native' files -->
+    <copy todir="${project.build.resources}">
+      <mapper type="glob" from="*.native.properties" to="*.native"/>
+      <fileset dir="${project.src}">
+        <include name="**/*.native.properties"/>
+      </fileset>
+    </copy>
+    <native2ascii
+      src="${project.build.resources}"
+      dest="${project.build.resources}"
+      includes="**/*.native"
+      ext=".properties"/>
+    <copy todir="${project.classes}">
+      <fileset dir="${project.build.resources}">
+        <include name="**/*.properties"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Binaries -->
+  <target name="binaries" depends="prepare, nextBuild, native2ascii">
+    <!-- Compile -->
+    <javac destdir="${project.classes}" classpathref="project.classpath" debug="on" source="1.4">
+      <src path="${project.src}"/>
+      <!--
+      Please uncomment follow to prevent full generation and select
+      only your package (for example if you have JUnit tests)
+      -->
+      <!--
+      <include name="your/package/**/*.java" />
+      -->
+      <include name="**/*.java"/>
+    </javac>
+    <!-- Copy to compiled classes all resources except the java sources -->
+    <copy todir="${project.classes}" includeemptydirs="no">
+      <fileset dir="${project.src}">
+        <include name="**/*.xml"/>
+        <include name="**/*.html"/>
+        <include name="**/*.properties"/>
+        <exclude name="test/**/*.*"/>
+        <exclude name="**/*.native.properties"/>
+      </fileset>
+      <filterset refid="project.filter"/>
+    </copy>
+
+    <property file="version.txt"/>
+
+    <!-- Insert version information -->
+    <replace dir="${project.classes}" includes="**/*.xml **/*.html">
+      <replacefilter token="@PLUGIN.NAME@" value="${project.name}"/>
+      <replacefilter token="@PLUGIN.TITLE@" value="${project.title}"/>
+      <replacefilter token="@PLUGIN.VENDOR@" value="${plugin.vendor}"/>
+      <replacefilter token="@PLUGIN.DESCRIPTION@" value="${plugin.description}"/>
+      <replacefilter token="@PLUGIN.VERSION@" value="${version.major.number}.${version.minor.number}.${release.number}"/>
+      <replacefilter token="@PLUGIN.VERSION.LONG@" value="${version.major.number}.${version.minor.number}.${release.number}.${build.number} (${project.build.date})"/>
+      <replacefilter token="@PLUGIN.URL@" value="${plugin.url}"/>
+      <replacefilter token="@PLUGIN.MODIFIED.YEAR@" value="${year}"/>
+      <replacefilter token="@PLUGIN.MODIFIED.MONTH@" value="${month}"/>
+      <replacefilter token="@PLUGIN.MODIFIED.DAY@" value="${day}"/>
+    </replace>
+
+    <copy todir="${project.classes}" includeemptydirs="no">
+      <fileset dir="${project.src}">
+        <include name="**/*.png"/>
+        <exclude name="test/**/*.*"/>
+        <exclude name="**/*.native.properties"/>
+      </fileset>
+    </copy>
+
+    
+    <jar jarfile="${project.build}/${project.name}/lib/${project.name}.jar" basedir="${project.classes}" compress="true">
+      <manifest>
+        <attribute name="Build" value="${version.major.number}.${version.minor.number}.${release.number}.${build.number}"/>
+        <attribute name="Build-Info" value="Built ${project.build.date} by ${project.author}"/>
+        <attribute name="Main-Class" value="regexPlugin.RegexStandalone"/>
+      </manifest>
+    </jar>
+    <copy todir="${project.build}/${project.name}">
+      <fileset dir="${project.ant}">
+        <include name="*.txt"/>
+      </fileset>
+      <filterset refid="project.filter"/>
+    </copy>
+
+    <zip zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}.zip" basedir="${project.build}" compress="true">
+      <include name="${project.name}/*.*"/>
+      <include name="${project.name}/lib/*.*"/>
+    </zip>
+  </target>
+
+  <!-- Source -->
+  <target name="sources" depends="prepare, native2ascii">
+    <zip zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}-src.zip" basedir="${basedir}" compress="true">
+      <include name="*.*"/>
+      <include name="${project.src}/**/*.*"/>
+      <include name="${project.src}/**/*"/>
+      <include name="${project.lib}/**/*.*"/>
+      <include name="${project.lib}/**/*"/>
+      <include name="ant/**/*.*"/>
+      <include name="ant/**/*"/>
+    </zip>
+  </target>
+
+  <!-- Coping binaries to IntelliJ plugins folder -->
+  <target name="install" depends="binaries">
+    <!-- Please change folder if you are using different folder for yor installation -->
+    <copy todir="${idea.home}/plugins" overwrite="true">
+      <fileset dir="${project.build}">
+        <include name="${project.name}/**/*.*"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Distribute -->
+  <target name="all" depends="prepare, binaries, sources"/>
+</project>

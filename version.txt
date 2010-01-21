@@ -1,0 +1,5 @@
+#Sat Aug 07 10:21:49 CEST 2004
+build.number=13
+version.minor.number=5
+version.major.number=0
+release.number=9

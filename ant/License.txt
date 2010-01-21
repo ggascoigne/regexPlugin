@@ -1,0 +1,3 @@
+License Agreement for @project.name@
+
+Put here license agreement

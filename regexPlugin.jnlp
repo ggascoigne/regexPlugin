@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jnlp href="regexPlugin.jnlp" spec="1.0+" codebase="http://gizmomogwai.dyndns.org/http/webstart/regex">
+  <information>
+    <title>RegexTool</title>
+    <vendor>flopcode/wydrune</vendor>
+    <homepage href="http://www.intellij.org/">
+    </homepage>
+    <description>
+    </description>
+    <description kind="short">
+    </description>
+    <offline-allowed>
+    </offline-allowed>
+  </information>
+  <security>
+    <all-permissions>
+    </all-permissions>
+  </security>
+  <resources>
+    <j2se version="1.4" max-heap-size="128m" initial-heap-size="32m">
+    </j2se>
+    <jar href="jdom-b9.jar">
+    </jar>
+    <jar main="true" href="regexPlugin-0.5.0.jar">
+    </jar>
+  </resources>
+  <application-desc main-class="regexPlugin.RegexStandalone">
+  </application-desc>
+</jnlp>

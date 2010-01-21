@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE idea-plugin-registry PUBLIC "-//IntelliJ Technology Network//DTD Plugin Manager 0.1//EN" "http://www.intellij.org/twiki/pub/Main/PluginManager/idea-plugin-registry.dtd">
+
+<idea-plugin-registry>
+    <idea-plugin>
+        <name>@PLUGIN.NAME@</name>
+        <description>@PLUGIN.DESCRIPTION@</description>
+        <version>@PLUGIN.VERSION@</version>
+        <vendor>Guy Gascoigne-Piggford (guy@wyrdrune.com), Christian K&#xF6;stlin (gizmo@flopcode.com)</vendor>
+        <idea-version since-build="1162" />
+        <docUrl>@PLUGIN.URL@</docUrl>
+        <lastModified year="@PLUGIN.MODIFIED.YEAR@" month="@PLUGIN.MODIFIED.MONTH@" day="@PLUGIN.MODIFIED.DAY@"/>
+    </idea-plugin>
+</idea-plugin-registry>
+

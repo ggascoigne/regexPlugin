@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
+
+<idea-plugin url="@PLUGIN.URL@">
+  <name>@PLUGIN.NAME@</name>
+  <description><![CDATA[
+  Regular Expression Explorer for IntelliJ IDEA.<br>
+  @PLUGIN.DESCRIPTION@
+  ]]></description>
+  <change-notes><![CDATA[
+<ul>
+  <li> 0.5.9 </li>
+  <ul>
+    <li> dockable reference card in addition to the popup
+    <li> ctrl-c in regexeditor copies the regex as java string
+  </ul>
+  
+  <li> 0.5.8 </li>
+  <ul>
+    <li>using since-build instead of min, max-version</li>
+  </ul>
+
+  <li> 0.5.7 </li>
+  <ul>
+    <li> smaller icons</li>
+    <li> consistent l&f with the idea project toggle buttons (short description in the statusbar and ind the tooltips)</li>
+    <li> referencepage moved into the menu</li>
+    <li> iconhelp with some more information on how the buttons really work</li>
+  </ul>
+</ul>
+]]>
+  </change-notes>
+
+  <version>@PLUGIN.VERSION@</version>
+  <vendor email="guy@wyrdrune.com">Guy Gascoigne-Piggford, Christian Koestlin</vendor>
+  <idea-version since-build="1162" />
+  <project-components>
+    <component>
+      <implementation-class>regexPlugin.RegexPlugin</implementation-class>
+      <interface-class>regexPlugin.RegexPlugin</interface-class>
+    </component>
+  </project-components>
+</idea-plugin>
