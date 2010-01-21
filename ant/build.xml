@@ -175,7 +175,7 @@
       <filterset refid="project.filter"/>
     </copy>
 
-    <property file="version.txt"/>
+    <propertyfile file="version.txt"/>
 
     <!-- Insert version information -->
     <replace dir="${project.classes}" includes="**/*.xml **/*.html">
@@ -235,8 +235,8 @@
 
   <!-- Coping binaries to IntelliJ plugins folder -->
   <target name="install" depends="binaries">
-    <!-- Please change folder if you are using different folder for yor installation -->
-    <copy todir="${plugin.home}/plugins" overwrite="true">
+    <!-- Please change folder if you are using different folder for your installation -->
+    <copy todir="${plugin.home}" overwrite="true">
       <fileset dir="${project.build}">
         <include name="${project.name}/**/*.*"/>
       </fileset>
