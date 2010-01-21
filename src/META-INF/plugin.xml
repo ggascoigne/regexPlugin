@@ -21,7 +21,7 @@
     <li>Removed the popup reference window. I really don't think that it was useful particularly because it can go behind the main IDEA window.</li>
     <li>Fixed a race condition (null pointer exception) in the stand alone swing app.</li>
     <li>Added icons to menu.</li>
-    <li>Change sizing of initial panes so that they are more likely to display nicely on a clean install.</li>
+    <li>Changed sizing of initial panes so that they are more likely to display nicely on a clean install.</li>
   </ul>
 
   <li> 0.5.9 </li>
