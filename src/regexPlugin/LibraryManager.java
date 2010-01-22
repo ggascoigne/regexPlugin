@@ -2,6 +2,7 @@ package regexPlugin;
 
 import regexPlugin.event.EventManager;
 import regexPlugin.event.Notifiable;
+import regexPlugin.library.LibraryComboBoxModel;
 
 import javax.swing.JComboBox;
 import javax.swing.SwingUtilities;

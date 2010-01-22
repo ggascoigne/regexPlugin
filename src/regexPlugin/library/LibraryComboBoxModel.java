@@ -1,4 +1,4 @@
-package regexPlugin;
+package regexPlugin.library;
 
 import javax.swing.AbstractListModel;
 import javax.swing.MutableComboBoxModel;

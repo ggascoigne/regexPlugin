@@ -175,7 +175,7 @@
       <filterset refid="project.filter"/>
     </copy>
 
-    <propertyfile file="version.txt"/>
+    <property file="version.txt"/>
 
     <!-- Insert version information -->
     <replace dir="${project.classes}" includes="**/*.xml **/*.html">

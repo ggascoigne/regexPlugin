@@ -4,6 +4,7 @@ import regexPlugin.actions.*;
 import regexPlugin.event.EventManager;
 import regexPlugin.event.ObjectEvent;
 import regexPlugin.event.ObjectListener;
+import regexPlugin.library.LibraryComboBoxModel;
 import regexPlugin.regexEditor.RegexEditor;
 import regexPlugin.ui.LabelEx;
 import regexPlugin.ui.Resources;
@@ -78,17 +79,13 @@ public class RegexPanel extends JPanel {
 
     fTogglePane = new ToggleSplitPane(midPane, createReferenceScrollPane(), iconCache);
 
-    final JPanel mainPanel = new JPanel(new BorderLayout());
-
     config.initializeSize( getSize(), false );
 
     setDividerPositions(config);
 
     fToolbar = createToolbar();
-    mainPanel.add(fToolbar, BorderLayout.PAGE_START);
-    mainPanel.add(fTogglePane, BorderLayout.CENTER);
-
-    add(mainPanel, BorderLayout.CENTER);
+    add(fToolbar, BorderLayout.PAGE_START);
+    add(fTogglePane, BorderLayout.CENTER);
 
     eventHandler = new ObjectListener() {
       public void event(final ObjectEvent event) {
@@ -114,7 +111,8 @@ public class RegexPanel extends JPanel {
               getConfig().showLabels = ((Boolean)event.getBody()).booleanValue();
               invalidateToolbar();
               // take this out one day if we work out how.
-              JOptionPane.showMessageDialog(mainPanel, Resources.getInstance().getString("showLabels.restartNeeded"));
+              JOptionPane.showMessageDialog(RegexPanel.this,
+                  Resources.getInstance().getString("showLabels.restartNeeded"));
             }
           }
         }
@@ -265,13 +263,15 @@ public class RegexPanel extends JPanel {
     addToggleFlagAction(group, "caseInsensitive", "casesensitiv.png", Pattern.CASE_INSENSITIVE);
     addToggleFlagAction(group, "multiline", "multiline.png", Pattern.MULTILINE);
     addToggleFlagAction(group, "dotall", "dotall.png", Pattern.DOTALL);
-    addToggleFlagAction(group, "unicodeCase", "dotall.png", Pattern.UNICODE_CASE);
-    addToggleFlagAction(group, "cannonEq", "dotall.png", Pattern.CANON_EQ);
+//    addToggleFlagAction(group, "unicodeCase", "dotall.png", Pattern.UNICODE_CASE);
+//    addToggleFlagAction(group, "cannonEq", "dotall.png", Pattern.CANON_EQ);
     addToggleAction(group, new ReplaceAllAction(fMatchAction, iconCache, config));
     addToggleAction(group, fTogglePane.getToggleAction());
     addAction(group, fMatchAction);
     addAction(group, new NewLibraryEntryAction(this));
     addAction(group, new DeleteCurrentLibraryEntryAction(this));
+
+    JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
     JComponent toolbar = uiFactory.getComponent("regextoolbar", group, true);
 
@@ -284,12 +284,13 @@ public class RegexPanel extends JPanel {
     libraryList.addActionListener(libraryManager);
     libraryList.addPopupMenuListener(libraryManager);
     libraryPanel.add(libraryList);
-    toolbar.add(createLabel("library"));
-    toolbar.add(libraryPanel);
+    wrapper.add( toolbar );
+    wrapper.add(createLabel("library"));
+    wrapper.add(libraryPanel);
     libraryManager.loadCurrent();
     libraryList.setSelectedItem(libraryManager.getCurrentLibraryName());
 
-    return toolbar;
+    return wrapper;
   }
 
   private void addToggleAction(Object group, GenericToggleAction action) {
