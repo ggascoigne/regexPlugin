@@ -10,69 +10,85 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
 import regexPlugin.uiInterface.Idea;
 
-import javax.swing.UIManager;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 
-public class RegexPlugin implements ProjectComponent, JDOMExternalizable {
+public class RegexPlugin implements ProjectComponent, JDOMExternalizable
+{
 
-  private static final String REGEX_PLUGIN_ID = "Regex";
+    private static final String REGEX_PLUGIN_ID = "Regex";
 
-  private Project fProject;
+    private Project fProject;
 
-  private RegexPanel fPanel;
+    private RegexPanel fPanel;
 
-  private RegexPluginConfig fConfig = new RegexPluginConfig();
+    private RegexPluginConfig fConfig = new RegexPluginConfig();
 
-  public RegexPlugin(final Project project) {
-    fProject = project;
-    UIManager.put("TextArea.font", new Font("Monospaced", Font.PLAIN, 11));
-  }
-
-  public void projectOpened() {
-    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(fProject);
-    toolWindowManager.registerToolWindow(REGEX_PLUGIN_ID, fPanel, ToolWindowAnchor.BOTTOM);
-  }
-
-  public void projectClosed() {
-    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(fProject);
-    toolWindowManager.unregisterToolWindow(REGEX_PLUGIN_ID);
-    fPanel.saveLibrary();
-  }
-
-  public String getComponentName() {
-    return "Regex";
-  }
-
-  public void initComponent() {
-    try {
-      fPanel = new RegexPanel(fConfig, new Idea());
-    } catch (Exception e) {
-      Utils.handleException("error.panelStartup", e);
+    public RegexPlugin( final Project project )
+    {
+        fProject = project;
+        UIManager.put( "TextArea.font", new Font( "Monospaced", Font.PLAIN, 11 ) );
     }
-  }
 
-  public void disposeComponent() {
-    fPanel.disposeComponent();
-  }
-
-
-  public void readExternal(org.jdom.Element element) throws InvalidDataException {
-    fConfig.readConfig(element);
-  }
-
-  public void writeExternal(org.jdom.Element element) throws WriteExternalException {
-    if (fPanel != null) {
-      DefaultJDOMExternalizer.writeExternal(fPanel.getConfig(), element);
+    public void projectOpened()
+    {
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(
+            fProject );
+        toolWindowManager.registerToolWindow( REGEX_PLUGIN_ID, fPanel,
+            ToolWindowAnchor.BOTTOM );
     }
-  }
 
-  /**
-   * Only used for debugging
-   *
-   * @return Some string that identifies the current owner of the fPanel, be it fProject or binary.
-   */
-  public String getName() {
-    return fProject.getName();
-  }
+    public void projectClosed()
+    {
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(
+            fProject );
+        toolWindowManager.unregisterToolWindow( REGEX_PLUGIN_ID );
+        fPanel.saveLibrary();
+    }
+
+    public String getComponentName()
+    {
+        return "Regex";
+    }
+
+    public void initComponent()
+    {
+        try
+        {
+            fPanel = new RegexPanel( fConfig, new Idea() );
+        }
+        catch ( Exception e )
+        {
+            Utils.handleException( "error.panelStartup", e );
+        }
+    }
+
+    public void disposeComponent()
+    {
+        fPanel.disposeComponent();
+    }
+
+    public void readExternal( org.jdom.Element element ) throws InvalidDataException
+    {
+        fConfig.readConfig( element );
+    }
+
+    public void writeExternal( org.jdom.Element element ) throws WriteExternalException
+    {
+        if ( fPanel != null )
+        {
+            DefaultJDOMExternalizer.writeExternal( fPanel.getConfig(), element );
+        }
+    }
+
+    /**
+     * Only used for debugging
+     *
+     * @return Some string that identifies the current owner of the fPanel, be it fProject or binary.
+     */
+    public String getName()
+    {
+        return fProject.getName();
+    }
 
 }
