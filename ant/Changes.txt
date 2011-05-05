@@ -1,3 +1,6 @@
+Version 0.6.2
+- Fixes for the 94.539 EAP (FLAVOR not found error).
+
 Version 0.6.1
 - Update for IntelliJ 9
 

@@ -62,7 +62,7 @@ public class EditorTransferHandler extends TransferHandler
             DataFlavor.stringFlavor,    // default decorated flavor
             regexFlavor,
             // raw regex flavor - used for internal pastes into the regex window
-            RawText.FLAVOR
+            RawText.getDataFlavor()
             // raw regex flavor (Idea specific) - used for paste-special in Idea to paste raw text
         };
 
@@ -92,18 +92,25 @@ public class EditorTransferHandler extends TransferHandler
         }
 
         // Returns Image object housed by Transferable object
-        public Object getTransferData(
-            DataFlavor flavor ) throws UnsupportedFlavorException, IOException
+        public Object getTransferData( DataFlavor flavor )
+            throws UnsupportedFlavorException, IOException
         {
             if ( !isDataFlavorSupported( flavor ) )
             {
                 throw new UnsupportedFlavorException( flavor );
             }
-            if ( flavor.equals( regexFlavor ) ) return data;
-            else if ( flavor.equals(
-                RawText.FLAVOR ) ) // allows paste-simple to work in Idea
+            if ( flavor.equals( regexFlavor ) )
+            {
+                return data;
+            }
+            else if ( flavor.equals( RawText.getDataFlavor() ) ) // allows paste-simple to work in Idea
+            {
                 return new RawText( data );
-            else return Regex2JavaString.quote( data, flags );
+            }
+            else
+            {
+                return Regex2JavaString.quote( data, flags );
+            }
         }
     }
 

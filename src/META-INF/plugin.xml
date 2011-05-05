@@ -9,6 +9,11 @@
   ]]></description>
   <change-notes><![CDATA[
 <ul>
+  <li> 0.6.2 </li>
+  <ul>
+    <li>Fixes for the 94.539 EAP (FLAVOR not found error).</li>
+  </ul>
+
   <li> 0.6.1 </li>
   <ul>
     <li>Update for IntelliJ 9</li>
@@ -34,7 +39,7 @@
     <li> dockable reference card in addition to the popup</li>
     <li> ctrl-c in regexeditor copies the regex as java string</li>
   </ul>
-  
+
   <li> 0.5.8 </li>
   <ul>
     <li>using since-build instead of min, max-version</li>

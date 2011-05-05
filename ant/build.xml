@@ -152,7 +152,7 @@
   <!-- Binaries -->
   <target name="binaries" depends="prepare, nextBuild, native2ascii">
     <!-- Compile -->
-    <javac destdir="${project.classes}" classpathref="project.classpath" debug="on" source="1.4">
+    <javac destdir="${project.classes}" classpathref="project.classpath" debug="on" source="1.6">
       <src path="${project.src}"/>
       <!--
       Please uncomment follow to prevent full generation and select
@@ -199,7 +199,7 @@
       </fileset>
     </copy>
 
-    
+
     <jar jarfile="${project.build}/${project.name}/lib/${project.name}.jar" basedir="${project.classes}" compress="true">
       <manifest>
         <attribute name="Build" value="${version.major.number}.${version.minor.number}.${release.number}.${build.number}"/>
