@@ -1,5 +1,5 @@
-#Thu Dec 29 17:26:24 PST 2005
-build.number=15
+#Tue Mar 16 12:46:24 PDT 2010
+build.number=48
 version.minor.number=6
 version.major.number=0
-release.number=0
+release.number=2

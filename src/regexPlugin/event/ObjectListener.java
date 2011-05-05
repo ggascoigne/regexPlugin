@@ -1,5 +1,6 @@
 package regexPlugin.event;
 
-public interface ObjectListener {
-  void event(ObjectEvent event);
+public interface ObjectListener
+{
+    void event( ObjectEvent event );
 }

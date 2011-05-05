@@ -1,9 +1,8 @@
 package regexPlugin;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-class FlagItemListener {}/*implements ItemListener {
+class FlagItemListener
+{
+}/*implements ItemListener {
     
   static public boolean m_disabled = false;
   private MatchAction matchAction;
