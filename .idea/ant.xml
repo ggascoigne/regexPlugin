@@ -10,7 +10,7 @@
       <maximumStackSize value="2" />
       <properties>
         <property name="idea.home" value="$APPLICATION_HOME_DIR$" />
-        <property name="plugin.home" value="$PROJECT_DIR$/../../../Library/Application Support/IntelliJIdea90" />
+        <property name="plugin.home" value="$USER_HOME$/Library/Application Support/IntelliJIdea90" />
       </properties>
     </buildFile>
   </component>

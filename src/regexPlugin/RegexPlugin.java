@@ -53,14 +53,20 @@ public class RegexPlugin implements ProjectComponent, JDOMExternalizable
 
     public void initComponent()
     {
-        try
+        SwingUtilities.invokeLater( new Runnable()
         {
-            fPanel = new RegexPanel( fConfig, new Idea() );
-        }
-        catch ( Exception e )
-        {
-            Utils.handleException( "error.panelStartup", e );
-        }
+            public void run()
+            {
+                try
+                {
+                    fPanel = new RegexPanel( fConfig, new Idea() );
+                }
+                catch ( Exception e )
+                {
+                    Utils.handleException( "error.panelStartup", e );
+                }
+            }
+        } );
     }
 
     public void disposeComponent()

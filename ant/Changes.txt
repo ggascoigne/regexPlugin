@@ -1,3 +1,6 @@
+Version 0.6.3
+- Fixes hang on startup with IntelliJ X.
+
 Version 0.6.2
 - Fixes for the 94.539 EAP (FLAVOR not found error).
 

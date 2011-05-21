@@ -9,6 +9,11 @@
   ]]></description>
   <change-notes><![CDATA[
 <ul>
+  <li> 0.6.3 </li>
+  <ul>
+    <li>Fixes hang on startup with IntelliJ X.</li>
+  </ul>
+
   <li> 0.6.2 </li>
   <ul>
     <li>Fixes for the 94.539 EAP (FLAVOR not found error).</li>
@@ -58,7 +63,7 @@
 
   <version>@PLUGIN.VERSION@</version>
   <vendor email="guy@wyrdrune.com">Guy Gascoigne-Piggford, Christian Koestlin</vendor>
-  <idea-version since-build="91.13"/>
+  <idea-version since-build="100.000"/>
   <project-components>
     <component>
       <implementation-class>regexPlugin.RegexPlugin</implementation-class>

@@ -1,29 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BuildServerSettings">
+    <option name="HISTORY" value="" />
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="PASSWORD" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_NAME" />
+    <option name="INSPECTIONS_PROJECT_ID" />
+    <option name="INSPECTIONS_BUILD_TYPE_ID" />
+    <option name="DUPLICATES_BUILD_TYPE_NAME" />
+    <option name="DUPLICATES_PROJECT_ID" />
+    <option name="DUPLICATES_BUILD_TYPE_ID" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_USER" value="true" />
+    <option name="FILTER_REMOTE_RUN_TREE" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <TreeState key="project">
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Root" />
+          <option name="myItemType" value="jetbrains.buildServer.tree.descriptors.RootDescriptor" />
+        </PATH_ELEMENT>
+      </PATH>
+    </TreeState>
+    <TreeState key="changes">
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Root" />
+          <option name="myItemType" value="jetbrains.buildServer.tree.descriptors.RootDescriptor" />
+        </PATH_ELEMENT>
+      </PATH>
+    </TreeState>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="96c7de28-a531-4a3e-8c03-236ea3b77f99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/idea-plugin-registry.xml" afterPath="$PROJECT_DIR$/src/META-INF/idea-plugin-registry.xml" />
+    <list default="true" id="96c7de28-a531-4a3e-8c03-236ea3b77f99" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ant.xml" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/IntelliJ.xml" afterPath="$PROJECT_DIR$/.idea/libraries/IntelliJ.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/projectCodeStyle.xml" afterPath="$PROJECT_DIR$/.idea/projectCodeStyle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/build.sh" afterPath="$PROJECT_DIR$/ant/build.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/src/META-INF/plugin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/regexEditor/EditorTransferHandler.java" afterPath="$PROJECT_DIR$/src/regexPlugin/regexEditor/EditorTransferHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/build.xml" afterPath="$PROJECT_DIR$/ant/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/Changes.txt" afterPath="$PROJECT_DIR$/ant/Changes.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant/build.sh" afterPath="$PROJECT_DIR$/ant/build.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/src/META-INF/plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/RegexPanel.java" afterPath="$PROJECT_DIR$/src/regexPlugin/RegexPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/RegexPlugin.java" afterPath="$PROJECT_DIR$/src/regexPlugin/RegexPlugin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/uiInterface/ComponentFactory.java" afterPath="$PROJECT_DIR$/src/regexPlugin/uiInterface/ComponentFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/uiInterface/Idea.java" afterPath="$PROJECT_DIR$/src/regexPlugin/uiInterface/Idea.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/regexPlugin/uiInterface/Swing.java" afterPath="$PROJECT_DIR$/src/regexPlugin/uiInterface/Swing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/version.txt" afterPath="$PROJECT_DIR$/version.txt" />
     </list>
     <ignored path="regexPlugin.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$USER_HOME_GRAILS$/" />
-    <ignored path="$USER_HOME_GRIFFON$/" />
+    <ignored path="$USER_HOME$/.grails/" />
+    <ignored path="$USER_HOME$/.griffon/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="ChangesViewManager" flattened_view="false" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -70,76 +113,39 @@
   <component name="FavoritesManager">
     <favorites_list name="regexPlugin" />
   </component>
-  <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EditorTransferHandler.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/regexPlugin/regexEditor/EditorTransferHandler.java">
+      <file leaf-file-name="Idea.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regexPlugin/uiInterface/Idea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="35" selection-start="2791" selection-end="2791" vertical-scroll-proportion="0.45101842">
+            <state line="56" column="10" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/plugin.xml">
+      <file leaf-file-name="RegexPlugin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regexPlugin/RegexPlugin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="58" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+            <state line="42" column="82" selection-start="1346" selection-end="1346" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Changes.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/Changes.txt">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
+            <state line="98" column="16" selection-start="3664" selection-end="3664" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="License.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/License.txt">
+      <file leaf-file-name="version.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/version.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Readme.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/Readme.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run.bat" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/run.bat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.bat" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/build.bat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.sh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant/build.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
+            <state line="3" column="22" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,7 +154,43 @@
       <file leaf-file-name="idea-plugin-registry.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/idea-plugin-registry.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="41" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+            <state line="11" column="50" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="20" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.7068404">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Changes.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant/Changes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="49" selection-start="2662" selection-end="2662" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LibraryManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regexPlugin/LibraryManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="221" column="0" selection-start="6077" selection-end="6182" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegexStandalone.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/regexPlugin/RegexStandalone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="23" selection-start="1739" selection-end="1739" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,30 +203,33 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
+    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/regexPlugin/Group.java" />
-        <option value="$PROJECT_DIR$/src/regexPlugin/RegexPanel.java" />
-        <option value="$PROJECT_DIR$/src/regexPlugin/actions/CopyRegexStringAction.java" />
-        <option value="$PROJECT_DIR$/src/regexPlugin/actions/GenericAction.java" />
-        <option value="$PROJECT_DIR$/src/regexPlugin/actions/GenericToggleAction.java" />
         <option value="$PROJECT_DIR$/src/regexPlugin/AutoUpdateDocumentListener.java" />
         <option value="$PROJECT_DIR$/src/regexPlugin/event/EventManager.java" />
-        <option value="$TEAMCITY$/idea/platform/platform-api/src/com/intellij/openapi/editor/RawText.java" />
         <option value="$PROJECT_DIR$/src/regexPlugin/regexEditor/EditorTransferHandler.java" />
         <option value="$PROJECT_DIR$/ant/build.xml" />
-        <option value="$PROJECT_DIR$/ant/build.sh" />
-        <option value="$PROJECT_DIR$/version.txt" />
         <option value="$PROJECT_DIR$/src/META-INF/idea-plugin-registry.xml" />
         <option value="$PROJECT_DIR$/build/RegexPlugin/Changes.txt" />
-        <option value="$PROJECT_DIR$/src/META-INF/plugin.xml" />
+        <option value="$PROJECT_DIR$/ant/build.sh" />
+        <option value="$PROJECT_DIR$/src/regexPlugin/uiInterface/ComponentFactory.java" />
+        <option value="$PROJECT_DIR$/src/regexPlugin/uiInterface/Swing.java" />
+        <option value="$PROJECT_DIR$/src/regexPlugin/RegexPanel.java" />
+        <option value="$PROJECT_DIR$/src/regexPlugin/uiInterface/Idea.java" />
+        <option value="$PROJECT_DIR$/src/regexPlugin/RegexPlugin.java" />
+        <option value="$PROJECT_DIR$/version.txt" />
         <option value="$PROJECT_DIR$/ant/Changes.txt" />
+        <option value="$PROJECT_DIR$/src/META-INF/plugin.xml" />
       </list>
     </option>
   </component>
-  <component name="MavenRunner">
-    <option name="jreName" value="1.6" />
+  <component name="InspectionPassRegistrar">
+    <option name="LOAD_NEW_PROBLEMS" value="true" />
   </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
@@ -192,10 +237,21 @@
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
-      <profile-state />
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id>Inspections</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -223,31 +279,32 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -257,11 +314,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -275,43 +332,43 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="help" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RegexPlugin" />
+              <option name="myItemId" value="docs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="regexPlugin.work" />
+              <option name="myItemId" value="regexPlugin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -321,7 +378,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +394,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="preferences.general" />
     <property name="FileHistory.org.emergent.bzr4j.intellij.provider.BzrHistoryProvider_treeWidth0" value="131" />
     <property name="FileHistory.org.emergent.bzr4j.intellij.provider.BzrHistoryProvider_treeWidth3" value="931" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -359,11 +415,11 @@
     <property name="FileHistory.org.emergent.bzr4j.intellij.provider.BzrHistoryProvider_flatOrder2" value="2" />
   </component>
   <component name="Regex">
-    <option name="pos1" value="623" />
-    <option name="pos2" value="623" />
-    <option name="pos3" value="209" />
-    <option name="pos4" value="1246" />
-    <option name="pos5" value="209" />
+    <option name="pos1" value="639" />
+    <option name="pos2" value="639" />
+    <option name="pos3" value="206" />
+    <option name="pos4" value="1278" />
+    <option name="pos5" value="206" />
     <option name="autoUpdate" value="true" />
     <option name="referenceOn" value="false" />
     <option name="referencePos" value="0" />
@@ -371,19 +427,6 @@
   </component>
   <component name="RegexUtilComponent" text="&quot;cmd.exe /c $(ScriptFile.bat)&quot;" flags="0" regex="(.*)(\$\(ScriptFile\.([^\.]+)\))(.*)" mode="1" />
   <component name="RunManager" selected="Application.RegexPlugin">
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" class_file="" class="" config_file="" is_config_by_xml="false" session_id="" directory="" file="" is_groups_set="false" max_children="100" max_data="100" max_depth="3" method_class="" method_file="" method="" path="" scope="Class">
-      <option name="excludedGroups">
-        <set />
-      </option>
-      <option name="includedGroups">
-        <set />
-      </option>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -394,11 +437,12 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" />
-      <extension name="snapshooter" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -428,6 +472,8 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -446,11 +492,12 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="emma" />
-      <extension name="snapshooter" />
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -467,11 +514,12 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" runner="emma" />
-      <extension name="snapshooter" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -488,16 +536,18 @@
         <value defaultName="moduleWithDependencies" />
       </option>
       <envs />
+      <patterns />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="false" name="RegexPlugin" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="emma" />
-      <extension name="snapshooter" />
       <option name="MAIN_CLASS_NAME" value="regexPlugin.RegexStandalone" />
       <option name="VM_PARAMETERS" value="-jar build/RegexPlugin/lib/RegexPlugin.jar" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -534,19 +584,22 @@
     <queries />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
     <option name="LAST_MERGED_REVISION" />
-    <option name="UPDATE_RUN_STATUS" value="false" />
     <option name="MERGE_DRY_RUN" value="false" />
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
     <option name="DETECT_NESTED_COPIES" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <configuration useDefault="true">$PROJECT_DIR$/../../../.subversion</configuration>
+    <option name="FORCE_UPDATE" value="false" />
+    <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
@@ -559,39 +612,51 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1600" height="1174" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1920" height="1174" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37962964" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37878788" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1708575" sideWeight="0.0" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16996258" sideWeight="0.7229602" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42435896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19213411" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39444444" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4037037" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="60" y="141" width="1320" height="370" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16408338" sideWeight="0.6212121" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34535104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40814394" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="60" y="141" width="1320" height="370" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42435896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21666667" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2777778" sideWeight="0.9619799" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25711575" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27703986" sideWeight="0.9619799" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -601,6 +666,9 @@
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="ENABLE_BACKGROUND_PROCESSES" value="true" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="Lots of reformatting&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
@@ -642,111 +710,90 @@
       <treeView value="true" />
       <verbose value="true" />
       <viewClosedWhenNoErrors value="false" />
+      <expanded value="true" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/regexPlugin/event/ObjectEvent.java">
+    <entry file="jar:///Applications/IntelliJ IDEA 10 CE.app/lib/openapi.jar!/com/intellij/openapi/components/BaseComponent.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" />
+        <state line="11" column="9" selection-start="327" selection-end="327" vertical-scroll-proportion="0.2188329" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/regexPlugin/event/ObjectListener.java">
+    <entry file="jar:///Applications/IntelliJ IDEA 10 CE.app/lib/util.jar!/com/intellij/openapi/util/DefaultJDOMExternalizer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" />
+        <state line="8" column="13" selection-start="186" selection-end="186" vertical-scroll-proportion="0.16194332" />
       </provider>
     </entry>
-    <entry file="jar:///System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/src.jar!/src/java/awt/datatransfer/DataFlavor.java">
+    <entry file="jar:///Applications/IntelliJ IDEA 10 CE.app/lib/openapi.jar!/com/intellij/openapi/wm/ToolWindowManager.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="13" selection-start="3752" selection-end="3752" vertical-scroll-proportion="0.69389766">
-          <folding />
-        </state>
+        <state line="14" column="55" selection-start="493" selection-end="493" vertical-scroll-proportion="0.2834008" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/RegexPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="0" selection-start="7338" selection-end="7338" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/uiInterface/Swing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="0" selection-start="7478" selection-end="7647" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/uiInterface/ComponentFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="2118" selection-end="2195" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/uiInterface/Idea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="10" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ant/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="95" selection-start="5865" selection-end="5865" vertical-scroll-proportion="-0.65217394">
-          <folding />
-        </state>
+        <state line="98" column="16" selection-start="3664" selection-end="3664" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/version.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="16" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$TEAMCITY$/idea/platform/platform-api/src/com/intellij/openapi/editor/RawText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="20" selection-start="1027" selection-end="1034" vertical-scroll-proportion="0.17458779">
-          <folding />
-        </state>
+        <state line="3" column="22" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/idea-plugin-registry.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="58" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="11" column="50" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ant/Changes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
+        <state line="95" column="49" selection-start="2662" selection-end="2662" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/LibraryManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="221" column="0" selection-start="6077" selection-end="6182" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/RegexStandalone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="23" selection-start="1739" selection-end="1739" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/regexPlugin/RegexPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="82" selection-start="1346" selection-end="1346" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ant/License.txt">
+    <entry file="file://$PROJECT_DIR$/docs/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ant/Readme.txt">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/run.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/build.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant/build.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/RegexPlugin/Changes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="29" selection-start="601" selection-end="601" vertical-scroll-proportion="0.24733269">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/regexPlugin/regexEditor/EditorTransferHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="35" selection-start="2791" selection-end="2791" vertical-scroll-proportion="0.45101842">
+        <state line="69" column="20" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.7068404">
           <folding />
         </state>
       </provider>
@@ -755,55 +802,87 @@
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
-        <UIState>
+        <settings>
+          <artifact-editor />
           <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
           </splitter-proportions>
-          <last-edited>regexPlugin</last-edited>
-          <settings />
-        </UIState>
+        </settings>
       </state>
       <state key="Copyright.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
-          </splitter-proportions>
-          <last-edited>Tripwire</last-edited>
-        </UIState>
+        <settings>
+          <splitter-proportions />
+        </settings>
       </state>
-      <state key="ProjectJDKs.UI">
-        <UIState>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
           <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
           </splitter-proportions>
-          <last-edited>1.5</last-edited>
-        </UIState>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>aopalliance</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>IDEA IC-99.32</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>RegexPlugin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>IntelliJ</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
       </state>
       <state key="ScopeChooserConfigurable.UI">
-        <UIState>
-          <splitter-proportions>
-            <SplitterProportionsDataImpl />
-          </splitter-proportions>
-          <settings />
-        </UIState>
+        <settings>
+          <splitter-proportions />
+        </settings>
       </state>
     </states>
   </component>

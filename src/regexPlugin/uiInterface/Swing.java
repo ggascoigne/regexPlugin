@@ -244,4 +244,10 @@ public class Swing extends ComponentFactory
         }
     }
 
+    public JScrollPane getScrollPane(java.awt.Component component)
+    {
+        //noinspection UndesirableClassUsage
+        return new JScrollPane( component );
+    }
+
 }

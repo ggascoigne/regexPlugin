@@ -1,6 +1,7 @@
 package regexPlugin.uiInterface;
 
 import com.intellij.openapi.actionSystem.*;
+import com.intellij.ui.components.JBScrollPane;
 import regexPlugin.RegexPanel;
 import regexPlugin.actions.GenericAction;
 import regexPlugin.actions.GenericToggleAction;
@@ -133,4 +134,8 @@ public class Idea extends ComponentFactory
         }
     }
 
+    public JScrollPane getScrollPane(java.awt.Component component)
+    {
+        return new JBScrollPane( component );
+    }
 }

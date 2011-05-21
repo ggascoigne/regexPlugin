@@ -1,5 +1,6 @@
+#Sat, 21 May 2011 11:25:07 -0700
 #Tue Mar 16 12:46:24 PDT 2010
-build.number=48
+build.number=4
 version.minor.number=6
 version.major.number=0
-release.number=2
+release.number=3

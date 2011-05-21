@@ -58,4 +58,5 @@ public abstract class ComponentFactory
     public abstract JComponent getComponent( String name, Object group,
         boolean horizontal );
 
+    public abstract JScrollPane getScrollPane(java.awt.Component component);
 }

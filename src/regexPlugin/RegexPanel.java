@@ -192,7 +192,8 @@ public class RegexPanel extends JPanel
 
     private JScrollPane createReferenceScrollPane() throws Exception
     {
-        final JScrollPane scrolledReference = new JScrollPane( createReferencePane() );
+        final JScrollPane scrolledReference =
+            uiFactory.getScrollPane( createReferencePane() );
         scrolledReference.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "reference" ) ) );
         return scrolledReference;
@@ -202,7 +203,7 @@ public class RegexPanel extends JPanel
     {
         matchDetails = new JTextArea( 5, 5 );
 
-        final JScrollPane scrolledMatchDetails = new JScrollPane( matchDetails );
+        final JScrollPane scrolledMatchDetails = uiFactory.getScrollPane( matchDetails );
         scrolledMatchDetails.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "matchDetails" ) ) );
         return scrolledMatchDetails;
@@ -211,7 +212,7 @@ public class RegexPanel extends JPanel
     private JScrollPane createFindOutputScrollPane()
     {
         findOutput = createHtmlOutputPane();
-        final JScrollPane scrolledFindOutput = new JScrollPane( findOutput );
+        final JScrollPane scrolledFindOutput = uiFactory.getScrollPane( findOutput );
         scrolledFindOutput.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "findOutput" ) ) );
         return scrolledFindOutput;
@@ -222,7 +223,8 @@ public class RegexPanel extends JPanel
         replaceOutput = new JTextPane();
         replaceOutput.setEditable( false );
         replaceOutput.setFont( UIManager.getFont( "TextArea.font" ) );
-        final JScrollPane scrolledReplaceOutput = new JScrollPane( replaceOutput );
+        final JScrollPane scrolledReplaceOutput =
+            uiFactory.getScrollPane( replaceOutput );
         scrolledReplaceOutput.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "replaceOutput" ) ) );
         return scrolledReplaceOutput;
@@ -236,7 +238,7 @@ public class RegexPanel extends JPanel
 
         replaceInput.getDocument().addDocumentListener( autoUpdater );
         replaceInput.setFont( UIManager.getFont( "TextArea.font" ) );
-        final JScrollPane scrolledReplaceInput = new JScrollPane( replaceInput );
+        final JScrollPane scrolledReplaceInput = uiFactory.getScrollPane( replaceInput );
         scrolledReplaceInput.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "replace" ) ) );
         return scrolledReplaceInput;
@@ -250,7 +252,7 @@ public class RegexPanel extends JPanel
 
         text.getDocument().addDocumentListener( autoUpdater );
         text.setFont( UIManager.getFont( "TextArea.font" ) );
-        final JScrollPane textScrollPane = new JScrollPane( text );
+        final JScrollPane textScrollPane = uiFactory.getScrollPane( text );
         textScrollPane.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "text" ) ) );
         return textScrollPane;
@@ -264,7 +266,7 @@ public class RegexPanel extends JPanel
 
         pattern.getDocument().addDocumentListener( autoUpdater );
         pattern.setFont( UIManager.getFont( "TextArea.font" ) );
-        final JScrollPane patternScrollPane = new JScrollPane( pattern );
+        final JScrollPane patternScrollPane = uiFactory.getScrollPane( pattern );
         patternScrollPane.setBorder(
             BorderFactory.createTitledBorder( Resources.getTitle( "pattern" ) ) );
         return patternScrollPane;
