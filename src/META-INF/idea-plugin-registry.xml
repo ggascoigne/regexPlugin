@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE idea-plugin-registry PUBLIC "-//IntelliJ Technology Network//DTD Plugin Manager 0.1//EN" "http://www.intellij.org/twiki/pub/Main/PluginManager/idea-plugin-registry.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE idea-plugin-registry PUBLIC "-//IntelliJ Technology Network//DTD Plugin Manager 0.1//EN"
+        "http://www.intellij.org/twiki/pub/Main/PluginManager/idea-plugin-registry.dtd">
 
 <idea-plugin-registry>
     <idea-plugin>
