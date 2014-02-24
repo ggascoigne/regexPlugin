@@ -10,6 +10,12 @@
   <change-notes><![CDATA[
 <ul>
 
+  <li> 0.7.2 </li>
+  <ul>
+    <li>Add option to copy the regex as is, skipping the conversion to java strings.</li>
+    <li>Fixed a stupid mistake in not testing with multiple projects open at once. This showed up as an assertion failure when opening a second project. Mea culpa.</li>
+  </ul>
+
   <li> 0.7.1 </li>
   <ul>
     <li>Major revamp of the color handling. The colors used in the plugin now reflect the color scheme chosen in the rest of IntelliJ. This makes the text much more readable if you use any of the dark themes available.</li>

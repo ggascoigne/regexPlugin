@@ -2,8 +2,3 @@ Add clear help on how to use tool, not just how to use regular expressions.
 Add examples.
 Add undo support to the pattern editor
 Make default window positions relative to the size of the initial window
-
-But since Idea X was annouced, it is not possible to copy text from \"Replace output\"
-text field of the plugin via Ctrl+C/Ctrl+X. :( It depends on some UI changes in Idea.
-Could you add \'Copy output to clipboard\' menu item to the plugin? Also, as Idea handle
-many languages, it would be better to add menu item \"Copy regex as is\".
