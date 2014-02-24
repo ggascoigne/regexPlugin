@@ -22,6 +22,7 @@ public abstract class ComponentManager {
     List entries = new ArrayList();
 
     List actions = new ArrayList();
+    actions.add(new CopyQuotedJavaRegexStringAction(panel));
     actions.add(new CopyRegexStringAction(panel));
     actions.add(new PasteRegexStringAction(panel));
     actions.add(new ImportTextAction(panel));

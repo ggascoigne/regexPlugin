@@ -8,15 +8,15 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
-public class CopyRegexStringAction extends GenericAction
+public class CopyQuotedJavaRegexStringAction extends GenericAction
 {
     private MatchAction m_anAction;
 
     private JTextComponent m_pattern;
 
-    public CopyRegexStringAction( final RegexPanel panel )
+    public CopyQuotedJavaRegexStringAction(final RegexPanel panel)
     {
-        super( panel, "copyRegexString", panel.getIconCache().getIcon( "copy.png" ) );
+        super( panel, "copyQuotedJavaRegexString", panel.getIconCache().getIcon( "copy.png" ) );
         m_pattern = panel.getPatternComponent();
         m_anAction = panel.getMatchAction();
     }
@@ -24,8 +24,10 @@ public class CopyRegexStringAction extends GenericAction
     public void perform()
     {
         final Clipboard cp = Toolkit.getDefaultToolkit().getSystemClipboard();
-        final StringSelection sel = new StringSelection( m_pattern.getText() );
+        final StringSelection sel = new StringSelection(
+            Regex2JavaString.quote( m_pattern.getText(), m_anAction.getFlags() ) );
         cp.setContents( sel, null );
     }
+
 }
 
