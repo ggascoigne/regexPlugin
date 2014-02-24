@@ -14,7 +14,7 @@ public class Symbol
      * The type is a small integer used to classify symbols.  It also
      * distinguishes different symbols with the same spelling, where necessary.
      */
-    public int type;
+    public TokenType type;
 
     /**
      * The spelling.
@@ -24,7 +24,7 @@ public class Symbol
     /**
      * Construct a symbol from its type and name.
      */
-    public Symbol( final int type, final String name )
+    public Symbol( final TokenType type, final String name )
     {
         this.type = type;
         this.name = name;
@@ -43,7 +43,7 @@ public class Symbol
      */
     public int hashCode()
     {
-        return name.hashCode() + type;
+        return name.hashCode() + type.ordinal();
     }
 
     /**

@@ -24,7 +24,7 @@
     <!-- Project name and version info -->
     <property name="project.title" value="Regular Expression Explorer"/>
     <property name="project.name" value="RegexPlugin"/>
-    <property name="plugin.vendor" value="Guy Gascoigne-Piggford &amp; Christian K&#xF6;stlin"/>
+    <property name="plugin.vendor" value="Guy Gascoigne-Piggford &amp; Christian Koestlin"/>
     <property name="plugin.description" value="Allows you to experiment with Java regular expressions in a dynamic environment."/>
     <property name="project.author" value="Guy Gascoigne-Piggford"/>
     <property name="plugin.idea.version.min" value="3.0"/>
@@ -152,7 +152,7 @@
   <!-- Binaries -->
   <target name="binaries" depends="prepare, nextBuild, native2ascii">
     <!-- Compile -->
-    <javac destdir="${project.classes}" classpathref="project.classpath" debug="on" source="1.6">
+    <javac destdir="${project.classes}" classpathref="project.classpath" debug="on" source="1.6" target="1.6">
       <src path="${project.src}"/>
       <!--
       Please uncomment follow to prevent full generation and select

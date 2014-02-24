@@ -28,25 +28,25 @@ package regexPlugin.regexEditor;
  * This class is based on the work of Ian Holyer at the University of Bristol.
  * http://www.cs.bris.ac.uk/Teaching/Resources/COMS30122/tools/index.html
  */
-public interface TokenTypes
-{
-    int UNRECOGNIZED = 0, WHITESPACE = 1, WORD = 2, NUMBER = 3, PUNCTUATION = 4, COMMENT =
-        5, CHARACTER = 6, CLASS = 7, BOUNDARY = 8, QUANTIFIER = 9;
+public enum TokenType {
+  UNRECOGNIZED("bad token"),
+  WHITESPACE("whitespace"),
+  WORD("word"),
+  NUMBER("number"),
+  PUNCTUATION("punctuation"),
+  COMMENT("comment"),
+  CHARACTER("character"),
+  CLASS("class"),
+  BOUNDARY("boundary"),
+  QUANTIFIER("quantifier");
 
-    /**
-     * The names of the token types, indexed by type, are provided for
-     * descriptive purposes.
-     */
-    String[] typeNames = {
-        "bad token",
-        "whitespace",
-        "word",
-        "number",
-        "punctuation",
-        "comment",
-        "character",
-        "class",
-        "boundary",
-        "quantifier"
-    };
+  private final String name;
+
+  TokenType(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
 }

@@ -77,7 +77,7 @@ import java.util.HashMap;
  * This class is based on the work of Ian Holyer at the University of Bristol.
  * http://www.cs.bris.ac.uk/Teaching/Resources/COMS30122/tools/index.html
  */
-public class Scanner implements TokenTypes
+public class Scanner
 {
     /**
      * The current buffer of text being scanned.
@@ -97,7 +97,7 @@ public class Scanner implements TokenTypes
     /**
      * The current scanner state, as a representative token type.
      */
-    protected int state = WHITESPACE;
+    protected TokenType state = TokenType.WHITESPACE;
 
     // The array of tokens forms a gap buffer.  The total length of the text is
     // tracked, and tokens after the gap have (negative) positions relative to
@@ -124,7 +124,7 @@ public class Scanner implements TokenTypes
     // Reuse this symbol object to create each new symbol, then look it up in
     // the symbol table, to replace it by a shared version to minimize space.
 
-    private Symbol symbol = new Symbol( 0, null );
+    private Symbol symbol = new Symbol( TokenType.UNRECOGNIZED, null );
 
     /**
      * <p>Read one token from the start of the current text buffer, given the
@@ -144,14 +144,14 @@ public class Scanner implements TokenTypes
      * languages.  The default version splits plain text into words, numbers and
      * punctuation.
      */
-    protected int read()
+    protected TokenType read()
     {
         char c = buffer[start];
-        final int type;
+        final TokenType type;
         // Ignore the state, since there is only one.
         if ( Character.isWhitespace( c ) )
         {
-            type = WHITESPACE;
+            type = TokenType.WHITESPACE;
             while ( ++start < end )
             {
                 if ( !Character.isWhitespace( buffer[start] ) ) break;
@@ -159,7 +159,7 @@ public class Scanner implements TokenTypes
         }
         else if ( Character.isLetter( c ) )
         {
-            type = WORD;
+            type = TokenType.WORD;
             while ( ++start < end )
             {
                 c = buffer[start];
@@ -170,7 +170,7 @@ public class Scanner implements TokenTypes
         }
         else if ( Character.isDigit( c ) )
         {
-            type = NUMBER;
+            type = TokenType.NUMBER;
             while ( ++start < end )
             {
                 c = buffer[start];
@@ -179,12 +179,12 @@ public class Scanner implements TokenTypes
         }
         else if ( c >= '!' || c <= '~' )
         {
-            type = PUNCTUATION;
+            type = TokenType.PUNCTUATION;
             start++;
         }
         else
         {
-            type = UNRECOGNIZED;
+            type = TokenType.UNRECOGNIZED;
             start++;
         }
 
@@ -206,7 +206,7 @@ public class Scanner implements TokenTypes
         textLength = 0;
         symbolTable = new HashMap();
         initSymbolTable();
-        Symbol endOfText = new Symbol( WHITESPACE, "" );
+        Symbol endOfText = new Symbol( TokenType.WHITESPACE, "" );
         tokens[0] = new Token( endOfText, 0 );
         scanning = false;
         position = 0;
@@ -316,7 +316,7 @@ public class Scanner implements TokenTypes
             else
             {
                 position = 0;
-                state = WHITESPACE;
+                state = TokenType.WHITESPACE;
             }
             while ( tokens[endgap].position + textLength < end ) endgap++;
             return gap;
@@ -343,7 +343,7 @@ public class Scanner implements TokenTypes
         else
         {
             position = 0;
-            state = WHITESPACE;
+            state = TokenType.WHITESPACE;
         }
         while ( tokens[endgap].position + textLength < end ) endgap++;
         return gap;
@@ -372,7 +372,7 @@ public class Scanner implements TokenTypes
      * keyword detection, for example.  The default implementation just uses the
      * table to ensure that there is only one shared occurrence of each symbol.
      */
-    protected Symbol lookup( final int type, final String name )
+    protected Symbol lookup( final TokenType type, final String name )
     {
         symbol.type = type;
         symbol.name = name;
@@ -411,10 +411,10 @@ public class Scanner implements TokenTypes
         while ( start < end )
         {
             final int tokenStart = start;
-            final int type = read();
+            final TokenType type = read();
             if ( start == end && !all ) break;
 
-            if ( type != WHITESPACE )
+            if ( type != TokenType.WHITESPACE )
             {
                 final String name = new String( buffer, tokenStart, start - tokenStart );
                 final Symbol sym = lookup( type, name );

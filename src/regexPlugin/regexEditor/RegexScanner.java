@@ -3,16 +3,16 @@ package regexPlugin.regexEditor;
 public class RegexScanner extends Scanner
 {
 
-    protected int read()
+    protected TokenType read()
     {
         char c = buffer[start];
-        int type = WHITESPACE;
+        TokenType type = TokenType.WHITESPACE;
         // Ignore the state, since there is only one.
         try
         {
             if ( Character.isWhitespace( c ) )
             {
-                type = WHITESPACE;
+                type = TokenType.WHITESPACE;
                 while ( ++start < end )
                 {
                     if ( !Character.isWhitespace( buffer[start] ) ) break;
@@ -21,7 +21,7 @@ public class RegexScanner extends Scanner
             else if ( c == '\\' )
             {
                 boolean done = false;
-                type = CHARACTER;
+                type = TokenType.CHARACTER;
                 if ( ++start < end )
                 {
                     c = buffer[start];
@@ -63,9 +63,9 @@ public class RegexScanner extends Scanner
                     }
                     if ( !done )
                     {
-                        if ( "dDsSwW".indexOf( c ) != -1 )
+                        if ( "dDsSwWp".indexOf( c ) != -1 )
                         {
-                            type = CLASS;
+                            type = TokenType.CLASS;
                             done = true;
                             start++;
                         }
@@ -74,7 +74,7 @@ public class RegexScanner extends Scanner
                     {
                         if ( "bBAGZz".indexOf( c ) != -1 )
                         {
-                            type = BOUNDARY;
+                            type = TokenType.BOUNDARY;
                             done = true;
                             start++;
                         }
@@ -84,7 +84,7 @@ public class RegexScanner extends Scanner
             }
             else if ( c == '#' )
             {
-                type = COMMENT;
+                type = TokenType.COMMENT;
                 while ( ++start < end )
                 {
                     if ( buffer[start] == '\n' ) break;
@@ -92,7 +92,7 @@ public class RegexScanner extends Scanner
             }
             else if ( c == '[' )
             {
-                type = CLASS;
+                type = TokenType.CLASS;
                 int braceCount = 1;
                 char oldChar = c;
                 while ( ++start < end )
@@ -120,12 +120,12 @@ public class RegexScanner extends Scanner
             }
             else if ( c == '^' || c == '$' )
             {
-                type = BOUNDARY;
+                type = TokenType.BOUNDARY;
                 start++;
             }
             else if ( Character.isLetter( c ) )
             {
-                type = WORD;
+                type = TokenType.WORD;
                 while ( ++start < end )
                 {
                     c = buffer[start];
@@ -136,7 +136,7 @@ public class RegexScanner extends Scanner
             }
             else if ( Character.isDigit( c ) )
             {
-                type = NUMBER;
+                type = TokenType.NUMBER;
                 while ( ++start < end )
                 {
                     c = buffer[start];
@@ -145,24 +145,24 @@ public class RegexScanner extends Scanner
             }
             else if ( c == '(' )
             {
-                type = PUNCTUATION;
+                type = TokenType.PUNCTUATION;
                 start++;
                 c = buffer[start];
                 if ( c == '?' ) start++;
             }
             else if ( c == '+' || c == '*' || c == '?' || c == '|' || c == '.' )
             {
-                type = QUANTIFIER;
+                type = TokenType.QUANTIFIER;
                 start++;
             }
             else if ( "){}:<>.=!,".indexOf( c ) != -1 )
             {
-                type = PUNCTUATION;
+                type = TokenType.PUNCTUATION;
                 start++;
             }
             else
             {
-                type = WORD;
+                type = TokenType.WORD;
                 start++;
             }
         }

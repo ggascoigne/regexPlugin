@@ -1,3 +1,9 @@
+Version 0.7.1
+ - Major revamp of the color handling.  The colors used in the plugin
+ now reflect the color scheme chosen in the rest of IntelliJ.  This
+ makes the text much more readable if you use any of the dark themes
+ available.
+
 Version 0.6.3
 - Fixes hang on startup with IntelliJ X.
 

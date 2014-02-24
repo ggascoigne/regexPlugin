@@ -1,9 +1,0 @@
-<component name="CopyrightManager">
-  <copyright>
-    <option name="notice" value="Copyright &amp;#36;today.year Tripwire, Inc. All Rights Reserved.&#10;&#10;User: &amp;#36;username&#10;Date: &amp;#36;today.format( &quot;EEE, MMM d, yyyy&quot; )&#10;Time: &amp;#36;today.format( &quot;hh:mm:ss aaa&quot; )" />
-    <option name="keyword" value="Copyright|Created by IntelliJ IDEA" />
-    <option name="allowReplaceKeyword" value="" />
-    <option name="myName" value="Tripwire" />
-    <option name="myLocal" value="true" />
-  </copyright>
-</component>

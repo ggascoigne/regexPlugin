@@ -9,6 +9,12 @@
   ]]></description>
   <change-notes><![CDATA[
 <ul>
+
+  <li> 0.7.1 </li>
+  <ul>
+    <li>Major revamp of the color handling. The colors used in the plugin now reflect the color scheme chosen in the rest of IntelliJ. This makes the text much more readable if you use any of the dark themes available.</li>
+  </ul>
+
   <li> 0.6.3 </li>
   <ul>
     <li>Fixes hang on startup with IntelliJ X.</li>
@@ -69,7 +75,7 @@
       <implementation-class>regexPlugin.RegexPlugin</implementation-class>
       <interface-class>regexPlugin.RegexPlugin</interface-class>
       <!-- Save state to the .iws instead of .ipr -->
-      <option name="workspace" value="true" />
+      <option name="workspace" value="true"/>
     </component>
   </project-components>
 </idea-plugin>

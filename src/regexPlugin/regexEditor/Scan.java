@@ -1,6 +1,6 @@
 package regexPlugin.regexEditor;
 
-// Illustrate the use of the scanner by reading in a file and diaplying its
+// Illustrate the use of the scanner by reading in a file and displaying its
 // tokens.
 
 import java.io.File;
@@ -47,7 +47,7 @@ class Scan
             System.out
                 .println(
                     "" + t.position + ": " + t.symbol.name + " " + t.symbol.type + "(" +
-                        TokenTypes.typeNames[t.symbol.type] + ")" );
+                        t.symbol.type.getName() + ")" );
         }
         System.err
             .println( "Elapsed time = " + (System.currentTimeMillis() - startTime) );

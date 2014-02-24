@@ -7,7 +7,7 @@
         <name>@PLUGIN.NAME@</name>
         <description>@PLUGIN.DESCRIPTION@</description>
         <version>@PLUGIN.VERSION@</version>
-        <vendor>Guy Gascoigne-Piggford (guy@wyrdrune.com), Christian K&#xF6;stlin (gizmo@flopcode.com)</vendor>
+        <vendor>Guy Gascoigne-Piggford (guy@wyrdrune.com), Christian Koestlin (gizmo@flopcode.com)</vendor>
         <idea-version since-build="94.539" />
         <docUrl>@PLUGIN.URL@</docUrl>
         <lastModified year="@PLUGIN.MODIFIED.YEAR@" month="@PLUGIN.MODIFIED.MONTH@" day="@PLUGIN.MODIFIED.DAY@"/>

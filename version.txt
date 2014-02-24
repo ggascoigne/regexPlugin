@@ -1,6 +1,6 @@
-#Sun, 23 Feb 2014 10:52:17 -0800
+#Sun, 23 Feb 2014 16:55:24 -0800
 #Tue Mar 16 12:46:24 PDT 2010
-build.number=5
-version.minor.number=6
+build.number=6
+version.minor.number=7
 version.major.number=0
-release.number=3
+release.number=1
