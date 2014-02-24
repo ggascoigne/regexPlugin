@@ -1,6 +1,7 @@
 package regexPlugin;
 
 import regexPlugin.ui.Resources;
+import regexPlugin.uiInterface.ComponentFactory;
 import regexPlugin.uiInterface.Swing;
 
 import javax.swing.*;
@@ -50,7 +51,7 @@ public class RegexStandalone
             {
                 try
                 {
-                    m_panel = new RegexPanel( getConfig(), new Swing() );
+                    m_panel = new RegexPanel( getConfig(), ComponentFactory.getInstance(ComponentFactory.Type.SWING) );
                     m_mainWin.getContentPane().add( m_panel );
                     synchronized ( LibraryManager.m_Lock )
                     {

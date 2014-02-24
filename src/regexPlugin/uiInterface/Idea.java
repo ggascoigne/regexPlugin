@@ -7,7 +7,6 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorFontType;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.colors.impl.EditorColorsSchemeImpl;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.ui.components.JBScrollPane;
 import regexPlugin.RegexPanel;
@@ -20,16 +19,19 @@ import regexPlugin.ui.Resources;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class Idea extends ComponentFactory {
+public class Idea extends ComponentManager {
 
-  public Idea() {
-    assert (instance == null);
-    instance = this;
+  static ComponentManager createOrGetInstance() {
+    if ( instance == null ) {
+      instance = new Idea();
+    }
+    return instance;
   }
+
+  private Idea() {}
 
   public Object createGroup(String name) {
     return new DefaultActionGroup(name, false);

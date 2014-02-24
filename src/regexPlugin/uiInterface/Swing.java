@@ -16,14 +16,18 @@ import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import java.util.List;
 
-public class Swing extends ComponentFactory {
+public class Swing extends ComponentManager {
 
   static final int ICON_SIZE = 24;
 
-  public Swing() {
-    assert( instance == null );
-    instance = this;
+  static ComponentManager createOrGetInstance() {
+    if ( instance == null ) {
+      instance = new Swing();
+    }
+    return instance;
   }
+
+  private Swing() {}
 
   public Object createGroup(String name) {
     JPanel res = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));

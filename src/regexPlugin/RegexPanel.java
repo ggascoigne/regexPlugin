@@ -8,7 +8,7 @@ import regexPlugin.library.LibraryComboBoxModel;
 import regexPlugin.regexEditor.RegexEditor;
 import regexPlugin.ui.LabelEx;
 import regexPlugin.ui.Resources;
-import regexPlugin.uiInterface.ComponentFactory;
+import regexPlugin.uiInterface.ComponentManager;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -49,7 +49,7 @@ public class RegexPanel extends JPanel {
 
   private JSplitPane midPane;
 
-  private ComponentFactory uiFactory;
+  private ComponentManager uiFactory;
 
   private LibraryManager libraryManager = new LibraryManager();
 
@@ -70,7 +70,7 @@ public class RegexPanel extends JPanel {
   public static final String EVENT_SHOW_LABELS = "showLabels";
 
   public RegexPanel(final RegexPluginConfig config,
-                    final ComponentFactory factory) throws Exception {
+                    final ComponentManager factory) throws Exception {
     this.config = config;
     libraryManager.init(this);
     uiFactory = factory;

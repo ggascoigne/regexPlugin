@@ -1,6 +1,6 @@
 package regexPlugin.regexEditor;
 
-import regexPlugin.uiInterface.ComponentFactory;
+import regexPlugin.uiInterface.ComponentManager;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -132,7 +132,7 @@ public class SyntaxHighlighter extends JTextPane implements DocumentListener {
    * <code>Font.BOLD|Font.ITALIC</code>.
    */
   public void changeStyle(final TokenType type) {
-    ComponentFactory.StyleTuple tuple = ComponentFactory.getInstance().getStyleFor(type);
+    ComponentManager.StyleTuple tuple = ComponentManager.getInstance().getStyleFor(type);
     final Style style = addStyle(type.getName(), null);
     StyleConstants.setForeground(style, tuple.getColor());
     if ((tuple.getFontStyle() & Font.BOLD) != 0) {

@@ -8,6 +8,8 @@ import com.intellij.openapi.util.JDOMExternalizable;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
+import regexPlugin.uiInterface.ComponentFactory;
+import regexPlugin.uiInterface.ComponentManager;
 import regexPlugin.uiInterface.Idea;
 
 import javax.swing.*;
@@ -59,7 +61,7 @@ public class RegexPlugin implements ProjectComponent, JDOMExternalizable
             {
                 try
                 {
-                    fPanel = new RegexPanel( fConfig, new Idea() );
+                    fPanel = new RegexPanel( fConfig,  ComponentFactory.getInstance(ComponentFactory.Type.IDEA) );
                 }
                 catch ( Exception e )
                 {

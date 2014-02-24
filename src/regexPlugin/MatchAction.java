@@ -1,7 +1,7 @@
 package regexPlugin;
 
 import regexPlugin.actions.GenericAction;
-import regexPlugin.uiInterface.ComponentFactory;
+import regexPlugin.uiInterface.ComponentManager;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -149,9 +149,9 @@ public class MatchAction extends GenericAction {
       final Match match = (Match) i.next();
       final String beforeMatch = text.substring(idx, match.getStartIdx());
       out.append(convertToHTML(beforeMatch));
-      String color = colorToHex(ComponentFactory.getInstance().getMatchColor1());
+      String color = colorToHex(ComponentManager.getInstance().getMatchColor1());
       if ((matchIdx % 2) != 0) {
-        color = colorToHex(ComponentFactory.getInstance().getMatchColor2());
+        color = colorToHex(ComponentManager.getInstance().getMatchColor2());
       }
       out.append("<a href=\"http://")
         .append(matchIdx++)
