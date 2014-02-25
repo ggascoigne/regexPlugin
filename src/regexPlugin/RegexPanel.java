@@ -70,7 +70,7 @@ public class RegexPanel extends JPanel {
   public static final String EVENT_SHOW_LABELS = "showLabels";
 
   public RegexPanel(final RegexPluginConfig config,
-                    final ComponentManager factory) throws Exception {
+      final ComponentManager factory) throws Exception {
     this.config = config;
     libraryManager.init(this);
     uiFactory = factory;
@@ -80,30 +80,30 @@ public class RegexPanel extends JPanel {
 
     fMatchAction = new MatchAction(this, iconCache);
     final AutoUpdateDocumentListener autoUpdater = new AutoUpdateDocumentListener(
-      fMatchAction, config);
+        fMatchAction, config);
 
     final JScrollPane patternScrollPane = createPatternScrollPane(autoUpdater);
     final JScrollPane textScrollPane = createTextScrollPane(autoUpdater);
     upperPane = createSplitPane(JSplitPane.HORIZONTAL_SPLIT, patternScrollPane,
-      textScrollPane);
+        textScrollPane);
 
     final JScrollPane scrolledReplaceInput = createReplaceInputScrollPane(
-      autoUpdater);
+        autoUpdater);
     final JScrollPane scrolledReplaceOutput = createReplaceOutputScrollPane();
     replacePane = createSplitPane(JSplitPane.VERTICAL_SPLIT, scrolledReplaceInput,
-      scrolledReplaceOutput);
+        scrolledReplaceOutput);
 
     final JScrollPane scrolledFindOutput = createFindOutputScrollPane();
     final JScrollPane scrolledMatchDetails = createMatchDetailsScrollPane();
 
     lowerPane = createSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrolledFindOutput,
-      scrolledMatchDetails);
+        scrolledMatchDetails);
 
     leftPane = createSplitPane(JSplitPane.VERTICAL_SPLIT, upperPane, lowerPane);
     midPane = createSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPane, replacePane);
 
     fTogglePane = new ToggleSplitPane(midPane, createReferenceScrollPane(),
-      iconCache);
+        iconCache);
 
     config.initializeSize(getSize(), false);
 
@@ -126,7 +126,7 @@ public class RegexPanel extends JPanel {
         } else if (event.getSource() != libraryManager) {
           if (LibraryManager.EVENT_SAVE.equals(event.getMessage())) {
             if (libraryManager.getCurrentLibraryName()
-              .equals(event.getBody())) {
+                .equals(event.getBody())) {
               libraryManager.loadLibrary((String) event.getBody());
             }
           }
@@ -135,14 +135,14 @@ public class RegexPanel extends JPanel {
         if (event.getSource() == EventManager.getGlobalTarget()) {
           if (RegexPanel.EVENT_SHOW_LABELS.equals(event.getMessage())) {
             if (getConfig().showLabels !=
-              ((Boolean) event.getBody()).booleanValue()) {
+                ((Boolean) event.getBody()).booleanValue()) {
               getConfig().showLabels =
-                ((Boolean) event.getBody()).booleanValue();
+                  ((Boolean) event.getBody()).booleanValue();
               invalidateToolbar();
               // take this out one day if we work out how.
               JOptionPane.showMessageDialog(RegexPanel.this,
-                Resources.getInstance().getString(
-                  "showLabels.restartNeeded"));
+                  Resources.getInstance().getString(
+                      "showLabels.restartNeeded"));
             }
           }
         }
@@ -150,9 +150,9 @@ public class RegexPanel extends JPanel {
     };
 
     EventManager.getInstance()
-      .addObjectListener(libraryManager.getClass(), eventHandler);
+        .addObjectListener(libraryManager.getClass(), eventHandler);
     EventManager.getInstance()
-      .addObjectListener(EventManager.getGlobalTarget(), eventHandler);
+        .addObjectListener(EventManager.getGlobalTarget(), eventHandler);
   }
 
   private void invalidateToolbar() {
@@ -161,9 +161,9 @@ public class RegexPanel extends JPanel {
 
   public void disposeComponent() {
     EventManager.getInstance()
-      .removeObjectListener(libraryManager.getClass(), eventHandler);
+        .removeObjectListener(libraryManager.getClass(), eventHandler);
     EventManager.getInstance()
-      .removeObjectListener(EventManager.getGlobalTarget(), eventHandler);
+        .removeObjectListener(EventManager.getGlobalTarget(), eventHandler);
   }
 
   public void saveLibrary() {
@@ -172,9 +172,9 @@ public class RegexPanel extends JPanel {
 
   private JScrollPane createReferenceScrollPane() throws Exception {
     final JScrollPane scrolledReference =
-      uiFactory.getScrollPane(createReferencePane());
+        uiFactory.getScrollPane(createReferencePane());
     scrolledReference.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("reference")));
+        BorderFactory.createTitledBorder(Resources.getTitle("reference")));
     return scrolledReference;
   }
 
@@ -184,7 +184,7 @@ public class RegexPanel extends JPanel {
     final JScrollPane scrolledMatchDetails = uiFactory.getScrollPane(matchDetails);
     matchDetails.setBackground(uiFactory.getDefaultBackgroundColor());
     scrolledMatchDetails.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("matchDetails")));
+        BorderFactory.createTitledBorder(Resources.getTitle("matchDetails")));
     return scrolledMatchDetails;
   }
 
@@ -194,7 +194,7 @@ public class RegexPanel extends JPanel {
     findOutput.setBackground(uiFactory.getDefaultBackgroundColor());
 
     scrolledFindOutput.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("findOutput")));
+        BorderFactory.createTitledBorder(Resources.getTitle("findOutput")));
     return scrolledFindOutput;
   }
 
@@ -204,14 +204,14 @@ public class RegexPanel extends JPanel {
     replaceOutput.setFont(uiFactory.getDefaultFont());
     replaceOutput.setBackground(uiFactory.getDefaultBackgroundColor());
     final JScrollPane scrolledReplaceOutput =
-      uiFactory.getScrollPane(replaceOutput);
+        uiFactory.getScrollPane(replaceOutput);
     scrolledReplaceOutput.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("replaceOutput")));
+        BorderFactory.createTitledBorder(Resources.getTitle("replaceOutput")));
     return scrolledReplaceOutput;
   }
 
   private JScrollPane createReplaceInputScrollPane(
-    final AutoUpdateDocumentListener autoUpdater) {
+      final AutoUpdateDocumentListener autoUpdater) {
     replaceInput = new JTextArea(5, 5);
     installUndoStuff(replaceInput);
 
@@ -221,12 +221,12 @@ public class RegexPanel extends JPanel {
 
     final JScrollPane scrolledReplaceInput = uiFactory.getScrollPane(replaceInput);
     scrolledReplaceInput.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("replace")));
+        BorderFactory.createTitledBorder(Resources.getTitle("replace")));
     return scrolledReplaceInput;
   }
 
   private JScrollPane createTextScrollPane(
-    final AutoUpdateDocumentListener autoUpdater) {
+      final AutoUpdateDocumentListener autoUpdater) {
     text = new JTextArea(5, 5);
     installUndoStuff(text);
 
@@ -236,12 +236,12 @@ public class RegexPanel extends JPanel {
 
     final JScrollPane textScrollPane = uiFactory.getScrollPane(text);
     textScrollPane.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("text")));
+        BorderFactory.createTitledBorder(Resources.getTitle("text")));
     return textScrollPane;
   }
 
   private JScrollPane createPatternScrollPane(
-    final AutoUpdateDocumentListener autoUpdater) {
+      final AutoUpdateDocumentListener autoUpdater) {
     pattern = new RegexEditor(fMatchAction);
     installUndoStuff(pattern);
 
@@ -251,7 +251,7 @@ public class RegexPanel extends JPanel {
 
     final JScrollPane patternScrollPane = uiFactory.getScrollPane(pattern);
     patternScrollPane.setBorder(
-      BorderFactory.createTitledBorder(Resources.getTitle("pattern")));
+        BorderFactory.createTitledBorder(Resources.getTitle("pattern")));
     return patternScrollPane;
   }
 
@@ -301,8 +301,8 @@ public class RegexPanel extends JPanel {
 
   private void addToggleFlagAction(Object g, String name, String res, int flag) {
     addToggleAction(g,
-      new ToggleFlagAction(name, res, flag, fMatchAction, iconCache,
-        config));
+        new ToggleFlagAction(name, res, flag, fMatchAction, iconCache,
+            config));
   }
 
   private void addAction(Object g, GenericAction action) {
@@ -313,12 +313,12 @@ public class RegexPanel extends JPanel {
 
     Object group = uiFactory.createGroup("regexactiongroup");
     uiFactory.addToGroup(group, uiFactory.createMenuAction(this, iconCache.getIcon(
-      "menu.png"), uiFactory.createRegexPopupMenu(this)));
+        "menu.png"), uiFactory.createRegexPopupMenu(this)));
     addToggleAction(group,
-      new ToggleAutoUpdateAction(fMatchAction, iconCache, config));
+        new ToggleAutoUpdateAction(fMatchAction, iconCache, config));
     addToggleFlagAction(group, "comments", "comment.png", Pattern.COMMENTS);
     addToggleFlagAction(group, "caseInsensitive", "casesensitiv.png",
-      Pattern.CASE_INSENSITIVE);
+        Pattern.CASE_INSENSITIVE);
     addToggleFlagAction(group, "multiline", "multiline.png", Pattern.MULTILINE);
     addToggleFlagAction(group, "dotall", "dotall.png", Pattern.DOTALL);
 //    addToggleFlagAction(group, "unicodeCase", "dotall.png", Pattern.UNICODE_CASE);
@@ -334,7 +334,7 @@ public class RegexPanel extends JPanel {
     JComponent toolbar = uiFactory.getComponent("regextoolbar", group, true);
 
     final JPanel libraryPanel = new JPanel(
-      new FlowLayout(FlowLayout.LEFT, 5, 10));
+        new FlowLayout(FlowLayout.LEFT, 5, 10));
 
     libraryManager.loadModel(libraryModel);
     final JComboBox libraryList = new JComboBox(libraryModel);
@@ -364,7 +364,7 @@ public class RegexPanel extends JPanel {
   }
 
   private JSplitPane createSplitPane(final int dir, final JComponent first,
-                                     final JComponent second) {
+      final JComponent second) {
     final JSplitPane pane = new JSplitPane(dir, true, first, second);
     pane.setBorder(null);
     // set this to 8, the default is far too large
@@ -381,9 +381,9 @@ public class RegexPanel extends JPanel {
       public void hyperlinkUpdate(final HyperlinkEvent hyperlinkEvent) {
         if (hyperlinkEvent.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
           final int matchIdx = Integer.parseInt(
-            hyperlinkEvent.getURL().getHost());
+              hyperlinkEvent.getURL().getHost());
           showMatchDetails(
-            (Match) fMatchAction.getFoundMatches().get(matchIdx));
+              (Match) fMatchAction.getFoundMatches().get(matchIdx));
         }
       }
     });
@@ -470,10 +470,10 @@ public class RegexPanel extends JPanel {
 
   public RegexPluginConfig getConfig() {
     config.update(upperPane.getDividerLocation(), lowerPane.getDividerLocation(),
-      leftPane.getDividerLocation(), midPane.getDividerLocation(),
-      replacePane.getDividerLocation(), config.autoUpdate,
-      fTogglePane.isOptionalOn(), fTogglePane.getDividerPos(),
-      config.showLabels);
+        leftPane.getDividerLocation(), midPane.getDividerLocation(),
+        replacePane.getDividerLocation(), config.autoUpdate,
+        fTogglePane.isOptionalOn(), fTogglePane.getDividerPos(),
+        config.showLabels);
     return config;
   }
 

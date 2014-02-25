@@ -21,13 +21,14 @@ public class Swing extends ComponentManager {
   static final int ICON_SIZE = 24;
 
   static ComponentManager createOrGetInstance() {
-    if ( instance == null ) {
+    if (instance == null) {
       instance = new Swing();
     }
     return instance;
   }
 
-  private Swing() {}
+  private Swing() {
+  }
 
   public Object createGroup(String name) {
     JPanel res = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -36,7 +37,7 @@ public class Swing extends ComponentManager {
 
   public Object createMenuAction(RegexPanel panel, Icon i, JPopupMenu popup) {
     return createCoolButton(
-      new MenuAction(popup, createIconWithBorder(i, ICON_SIZE)));
+        new MenuAction(popup, createIconWithBorder(i, ICON_SIZE)));
   }
 
   public Object createToggleAction(GenericToggleAction a) {
@@ -92,10 +93,10 @@ public class Swing extends ComponentManager {
     int iconHeight = icon.getIconHeight();
 
     BufferedImage i = new BufferedImage(iconSize, iconSize,
-      BufferedImage.TYPE_INT_ARGB);
+        BufferedImage.TYPE_INT_ARGB);
     Graphics g = i.getGraphics();
     icon.paintIcon(null, g, (iconSize - iconWidth) / 2,
-      (iconSize - iconHeight) / 2);
+        (iconSize - iconHeight) / 2);
     return new ImageIcon(i);
   }
 
@@ -166,11 +167,11 @@ public class Swing extends ComponentManager {
       setMargin(new Insets(0, 0, 0, 0));
 
       Icon rolloverIcon = createAnotherIcon(normalIcon,
-        new Color(181, 190, 214));
+          new Color(181, 190, 214));
       setRolloverIcon(rolloverIcon);
       setRolloverSelectedIcon(rolloverIcon);
       setSelectedIcon(
-        createAnotherIcon(normalIcon, new Color(130, 146, 185)));
+          createAnotherIcon(normalIcon, new Color(130, 146, 185)));
 
       if (action.showDescription()) {
         setText(a.getName());
@@ -195,7 +196,7 @@ public class Swing extends ComponentManager {
       int iconWidth = icon.getIconWidth();
       int iconHeight = icon.getIconHeight();
       BufferedImage i = new BufferedImage(iconWidth, iconHeight,
-        BufferedImage.TYPE_INT_ARGB);
+          BufferedImage.TYPE_INT_ARGB);
       Graphics g = i.getGraphics();
       g.setColor(color);
       g.fillRect(0, 0, iconWidth, iconHeight);
@@ -242,7 +243,7 @@ public class Swing extends ComponentManager {
 
   @Override
   public StyleTuple getStyleFor(TokenType type) {
-    switch (type){
+    switch (type) {
       case WHITESPACE:
         return new StyleTuple(Color.BLACK, Font.PLAIN);
       case WORD:

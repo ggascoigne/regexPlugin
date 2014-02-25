@@ -1,5 +1,4 @@
 package regexPlugin.event;
 
-public interface Notifiable
-{
+public interface Notifiable {
 }

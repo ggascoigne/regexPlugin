@@ -1,18 +1,18 @@
 <project default="help" basedir="..">
   <!-- Cleanup classes and build directory, create all directories -->
-    <property name="plugin.home" value=""/>
-    <target name="prepare">
+  <property name="plugin.home" value=""/>
+  <target name="prepare">
     <condition property="project.external.config">
-        <and>
-            <available file="${idea.home}" type="dir"/>
-            <available file="${plugin.home}" type="dir"/>
-        </and>
+      <and>
+        <available file="${idea.home}" type="dir"/>
+        <available file="${plugin.home}" type="dir"/>
+      </and>
     </condition>
     <fail unless="project.external.config">
       External properties not set or have wrong values
       This ant build must be run with -Didea.home=..
       Where:
-        idea.home    contains full path to IntelliJ idea home directory.
+      idea.home contains full path to IntelliJ idea home directory.
       Currently properties is:
       idea.home = ${idea.home}
       plugin.home = ${plugin.home}
@@ -25,7 +25,8 @@
     <property name="project.title" value="Regular Expression Explorer"/>
     <property name="project.name" value="RegexPlugin"/>
     <property name="plugin.vendor" value="Guy Gascoigne-Piggford &amp; Christian Koestlin"/>
-    <property name="plugin.description" value="Allows you to experiment with Java regular expressions in a dynamic environment."/>
+    <property name="plugin.description"
+              value="Allows you to experiment with Java regular expressions in a dynamic environment."/>
     <property name="project.author" value="Guy Gascoigne-Piggford"/>
     <property name="plugin.idea.version.min" value="3.0"/>
     <property name="plugin.idea.version.max" value="4.1"/>
@@ -121,10 +122,10 @@
     <echo>
       ${ant.version} (JDK ${ant.java.version})
       ${ant.file}:
-        javadoc   - Generate javadoc information for project
-        binaries  - Build plugin binaries
-        sources   - Archive sources package
-        all       - Build plugin binaries and source distributive
+      javadoc - Generate javadoc information for project
+      binaries - Build plugin binaries
+      sources - Archive sources package
+      all - Build plugin binaries and source distributive
     </echo>
   </target>
 
@@ -138,10 +139,10 @@
       </fileset>
     </copy>
     <native2ascii
-      src="${project.build.resources}"
-      dest="${project.build.resources}"
-      includes="**/*.native"
-      ext=".properties"/>
+        src="${project.build.resources}"
+        dest="${project.build.resources}"
+        includes="**/*.native"
+        ext=".properties"/>
     <copy todir="${project.classes}">
       <fileset dir="${project.build.resources}">
         <include name="**/*.properties"/>
@@ -183,8 +184,10 @@
       <replacefilter token="@PLUGIN.TITLE@" value="${project.title}"/>
       <replacefilter token="@PLUGIN.VENDOR@" value="${plugin.vendor}"/>
       <replacefilter token="@PLUGIN.DESCRIPTION@" value="${plugin.description}"/>
-      <replacefilter token="@PLUGIN.VERSION@" value="${version.major.number}.${version.minor.number}.${release.number}"/>
-      <replacefilter token="@PLUGIN.VERSION.LONG@" value="${version.major.number}.${version.minor.number}.${release.number}.${build.number} (${project.build.date})"/>
+      <replacefilter token="@PLUGIN.VERSION@"
+                     value="${version.major.number}.${version.minor.number}.${release.number}"/>
+      <replacefilter token="@PLUGIN.VERSION.LONG@"
+                     value="${version.major.number}.${version.minor.number}.${release.number}.${build.number} (${project.build.date})"/>
       <replacefilter token="@PLUGIN.URL@" value="${plugin.url}"/>
       <replacefilter token="@PLUGIN.MODIFIED.YEAR@" value="${year}"/>
       <replacefilter token="@PLUGIN.MODIFIED.MONTH@" value="${month}"/>
@@ -200,9 +203,11 @@
     </copy>
 
 
-    <jar jarfile="${project.build}/${project.name}/lib/${project.name}.jar" basedir="${project.classes}" compress="true">
+    <jar jarfile="${project.build}/${project.name}/lib/${project.name}.jar" basedir="${project.classes}"
+         compress="true">
       <manifest>
-        <attribute name="Build" value="${version.major.number}.${version.minor.number}.${release.number}.${build.number}"/>
+        <attribute name="Build"
+                   value="${version.major.number}.${version.minor.number}.${release.number}.${build.number}"/>
         <attribute name="Build-Info" value="Built ${project.build.date} by ${project.author}"/>
         <attribute name="Main-Class" value="regexPlugin.RegexStandalone"/>
       </manifest>
@@ -214,7 +219,9 @@
       <filterset refid="project.filter"/>
     </copy>
 
-    <zip zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}.zip" basedir="${project.build}" compress="true">
+    <zip
+        zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}.zip"
+        basedir="${project.build}" compress="true">
       <include name="${project.name}/*.*"/>
       <include name="${project.name}/lib/*.*"/>
     </zip>
@@ -222,7 +229,9 @@
 
   <!-- Source -->
   <target name="sources" depends="prepare, native2ascii">
-    <zip zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}-src.zip" basedir="${basedir}" compress="true">
+    <zip
+        zipfile="${project.build}/${project.name}-${version.major.number}.${version.minor.number}.${release.number}-src.zip"
+        basedir="${basedir}" compress="true">
       <include name="*.*"/>
       <include name="${project.src}/**/*.*"/>
       <include name="${project.src}/**/*"/>

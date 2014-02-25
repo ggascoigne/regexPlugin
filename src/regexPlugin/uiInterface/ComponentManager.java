@@ -38,9 +38,9 @@ public abstract class ComponentManager {
     entries.add(createToggleMenuAction(new ToggleLabelsAction(panel)));
 
     entries.add(createGenericActionMenuAdapter(
-      new ShowHtmlAction(panel, "help", "/help/help.html")));
+        new ShowHtmlAction(panel, "help", "/help/help.html")));
     entries.add(createGenericActionMenuAdapter(
-      new ShowHtmlAction(panel, "about", "/help/About.html")));
+        new ShowHtmlAction(panel, "about", "/help/About.html")));
 
     return createPopup("RegexPopup", entries);
   }
@@ -64,7 +64,7 @@ public abstract class ComponentManager {
   public abstract void addToGroup(Object group, Object something);
 
   public abstract JComponent getComponent(String name, Object group,
-                                          boolean horizontal);
+      boolean horizontal);
 
   public abstract JScrollPane getScrollPane(java.awt.Component component);
 

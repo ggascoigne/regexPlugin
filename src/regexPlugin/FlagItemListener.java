@@ -1,9 +1,8 @@
 package regexPlugin;
 
-class FlagItemListener
-{
+class FlagItemListener {
 }/*implements ItemListener {
-    
+
   static public boolean m_disabled = false;
   private MatchAction matchAction;
 

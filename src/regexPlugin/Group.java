@@ -2,33 +2,28 @@ package regexPlugin;
 
 import java.util.regex.Matcher;
 
-class Group
-{
-    String text;
+class Group {
+  String text;
 
-    int startIdx;
+  int startIdx;
 
-    int endIdx;
+  int endIdx;
 
-    public Group( Matcher m, int groupIdx )
-    {
-        text = m.group( groupIdx );
-        startIdx = m.start( groupIdx );
-        endIdx = m.end( groupIdx );
-    }
+  public Group(Matcher m, int groupIdx) {
+    text = m.group(groupIdx);
+    startIdx = m.start(groupIdx);
+    endIdx = m.end(groupIdx);
+  }
 
-    public String getText()
-    {
-        return text;
-    }
+  public String getText() {
+    return text;
+  }
 
-    public int getStartIdx()
-    {
-        return startIdx;
-    }
+  public int getStartIdx() {
+    return startIdx;
+  }
 
-    public int getEndIdx()
-    {
-        return endIdx;
-    }
+  public int getEndIdx() {
+    return endIdx;
+  }
 }

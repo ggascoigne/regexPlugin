@@ -2,3 +2,8 @@ Add clear help on how to use tool, not just how to use regular expressions.
 Add examples.
 Add undo support to the pattern editor
 Make default window positions relative to the size of the initial window
+
+Size fonts  in keeping with editor font.
+Switch to using a real intellij editor for the regex pane
+
+Switch build over to gradle

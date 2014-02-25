@@ -44,7 +44,7 @@ public class SyntaxHighlighter extends JTextPane implements DocumentListener {
    * Provide a width and height, in characters, and a language scanner.
    */
   public SyntaxHighlighter(StyledDocument doc, final int height, final int width,
-                           final Scanner scanner) {
+      final Scanner scanner) {
     super(doc);
     this.doc = (StyledDocument) getDocument();
     this.height = height;

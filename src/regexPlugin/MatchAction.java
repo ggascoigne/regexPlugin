@@ -44,10 +44,10 @@ public class MatchAction extends GenericAction {
       String res = null;
       if (isReplaceAll()) {
         res = matcher.replaceAll(
-          regexPanel.getReplaceInputComponent().getText());
+            regexPanel.getReplaceInputComponent().getText());
       } else {
         res = matcher.replaceFirst(
-          regexPanel.getReplaceInputComponent().getText());
+            regexPanel.getReplaceInputComponent().getText());
       }
       regexPanel.getReplaceOutputComponent().setText(res);
 
@@ -59,9 +59,9 @@ public class MatchAction extends GenericAction {
   private Pattern getPattern(RegexPanel regexPanel) {
     String patternString = regexPanel.getPatternComponent().getText();
     if ((pattern == null) || (pattern.flags() != flags) ||
-      (!pattern.pattern().equals(patternString))) {
+        (!pattern.pattern().equals(patternString))) {
       pattern = Pattern.compile(regexPanel.getPatternComponent().getText(),
-        flags);
+          flags);
     }
     return pattern;
   }
@@ -154,12 +154,12 @@ public class MatchAction extends GenericAction {
         color = colorToHex(ComponentManager.getInstance().getMatchColor2());
       }
       out.append("<a href=\"http://")
-        .append(matchIdx++)
-        .append("\"><font color=\"")
-        .append(color)
-        .append("\">")
-        .append(convertToHTML(match.getText()))
-        .append("</font></a>");
+          .append(matchIdx++)
+          .append("\"><font color=\"")
+          .append(color)
+          .append("\">")
+          .append(convertToHTML(match.getText()))
+          .append("</font></a>");
       idx = match.getEndIdx();
     }
     if (idx < text.length()) {

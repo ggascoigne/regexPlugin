@@ -25,13 +25,14 @@ import java.util.List;
 public class Idea extends ComponentManager {
 
   static ComponentManager createOrGetInstance() {
-    if ( instance == null ) {
+    if (instance == null) {
       instance = new Idea();
     }
     return instance;
   }
 
-  private Idea() {}
+  private Idea() {
+  }
 
   public Object createGroup(String name) {
     return new DefaultActionGroup(name, false);
@@ -48,7 +49,7 @@ public class Idea extends ComponentManager {
 
   public JComponent getComponent(String name, Object group, boolean horizontal) {
     ActionToolbar actionToolbar = ActionManager.getInstance()
-      .createActionToolbar(name, (ActionGroup) group, horizontal);
+        .createActionToolbar(name, (ActionGroup) group, horizontal);
     return actionToolbar.getComponent();
   }
 
@@ -70,13 +71,13 @@ public class Idea extends ComponentManager {
     }
 
     final ActionPopupMenu popup = ActionManager.getInstance()
-      .createActionPopupMenu("RegexPlugin", group);
+        .createActionPopupMenu("RegexPlugin", group);
     return popup.getComponent();
   }
 
   protected Object createSubMenu(String key, List actions) {
     DefaultActionGroup menu = new DefaultActionGroup(Resources.getLabel(key),
-      true);
+        true);
     addToMenu(menu, actions);
     return menu;
   }
