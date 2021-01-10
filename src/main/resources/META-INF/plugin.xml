@@ -1,0 +1,11 @@
+<idea-plugin>
+  <id>com.wyrdrune.regexplugin</id>
+  <name>RegexPlugin</name>
+  <vendor email="guy@wyrdrune.com">Guy Gascoigne-Piggford</vendor>
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="Regex" icon="AllIcons.General.Modified" anchor="bottom"
+                factoryClass="com.wyrdrune.regexplugin.RegexPluginToolWindowFactory"/>
+    <applicationService serviceImplementation="com.wyrdrune.regexplugin.RegexPluginToolWindow"/>
+  </extensions>
+</idea-plugin>

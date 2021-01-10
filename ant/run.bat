@@ -1,1 +1,0 @@
-java -jar ..\build\regexplugin\lib\regexplugin.jar
