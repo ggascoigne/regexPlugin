@@ -12,7 +12,7 @@ public class RegexPluginToolWindow {
   private RegexPluginConfig fConfig = new RegexPluginConfig();
 
   public RegexPluginToolWindow(ToolWindow toolWindow) throws Exception {
-    fPanel = new RegexPanel(fConfig, ComponentFactory.getInstance(ComponentFactory.Type.IDEA));
+    fPanel = new RegexPanel(fConfig, ComponentFactory.getInstance());
   }
 
   public JPanel getContent() {

@@ -15,6 +15,7 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.undo.UndoManager;
 
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.wyrdrune.regexplugin.actions.DeleteCurrentLibraryEntryAction;
 import com.wyrdrune.regexplugin.actions.GenericAction;
 import com.wyrdrune.regexplugin.actions.GenericToggleAction;
@@ -321,7 +322,7 @@ public class RegexPanel extends JPanel {
 
   private JComponent createToolbar() {
 
-    Object group = uiFactory.createGroup("regexactiongroup");
+    Object group = new DefaultActionGroup("regexactiongroup", false);
     uiFactory.addToGroup(group, uiFactory.createMenuAction(this, iconCache.getIcon(
         "menu.png"), uiFactory.createRegexPopupMenu(this)));
     addToggleAction(group,

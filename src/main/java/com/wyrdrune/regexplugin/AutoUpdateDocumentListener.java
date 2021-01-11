@@ -30,7 +30,7 @@ class AutoUpdateDocumentListener implements DocumentListener {
   }
 
   private void autoupdate() {
-    if (config.isAutoUpdateEnabled() == true) {
+    if (config.isAutoUpdateEnabled()) {
       anAction.perform();
     }
   }

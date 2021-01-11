@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 public class Resources {
   protected static final Resources ms_inst = new Resources();
 
-  private ResourceBundle m_bundle;
+  private final ResourceBundle m_bundle;
 
   public static Resources getInstance() {
     return ms_inst;
