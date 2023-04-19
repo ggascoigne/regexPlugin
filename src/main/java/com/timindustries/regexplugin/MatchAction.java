@@ -142,19 +142,18 @@ public class MatchAction extends GenericAction {
     final StringBuilder out = new StringBuilder("<html><body style=\"font-size:24px\">");
 
     int idx = 0;
-    final Iterator<Match> i = foundMatches.iterator();
-    int matchIdx = 0;
-    while (i.hasNext()) {
-      final Match match =  i.next();
+    for (int i = 0; i < foundMatches.size(); i++) {
+      final Match match = foundMatches.get(i);
       final String beforeMatch = text.substring(idx, match.getStartIdx());
       out.append(convertToHTML(beforeMatch));
 
       String totalLine = match.groups.get(0).text;
-      var decal = -1*beforeMatch.length();
+
+      var decal = -1*(text.substring(0, match.getStartIdx()).length());
       for(int j = 1; j < match.groups.size(); j++){
           String fragment = "".concat("<span style=\"background-color:").concat(randomRgba())
                 .concat("\">")
-                .concat(convertToHTML(match.groups.get(j).text))
+                .concat(convertToHTML(nvl(match.groups.get(j).text)))
                 .concat("</span>");
         totalLine = totalLine.substring(0, calculateStartFragmentIndexOffset(match, j, decal))
                 .concat(fragment)
@@ -163,7 +162,7 @@ public class MatchAction extends GenericAction {
       }
 
       out.append("<a href=\"http://")
-              .append(matchIdx)
+              .append(i)
               .append("\"><span style=\"background-color:")
               .append("rgba(0, 255, 0, 0.2)")
               .append("\">")
@@ -171,7 +170,6 @@ public class MatchAction extends GenericAction {
               .append("</span></a>");
 
       idx = match.getEndIdx();
-      matchIdx++;
     }
     if (idx < text.length()) {
       out.append(convertToHTML(text.substring(idx)));
@@ -181,17 +179,15 @@ public class MatchAction extends GenericAction {
     regexPanel.getFindOutputComponent().setText(out.toString());
   }
 
+  private static String nvl(String s) {
+    return s == null ? "" : s;
+  }
+
   private static int calculateEndFragmentIndexOffset(Match match, int decal, int j) {
-    if(j==1){
-      return match.groups.get(j).endIdx + decal;
-    }
     return match.groups.get(j).endIdx + decal;
   }
 
   private static int calculateStartFragmentIndexOffset(Match match, int j, int decal) {
-    if(j==1){
-      return match.groups.get(j).startIdx + decal;
-    }
     return match.groups.get(j).startIdx + decal;
   }
 
