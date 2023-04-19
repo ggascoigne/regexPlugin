@@ -1,10 +1,10 @@
 <idea-plugin>
-  <id>com.wyrdrune.regexplugin</id>
-  <name>RegexPlugin</name>
-  <vendor email="guy@wyrdrune.com">Guy Gascoigne-Piggford</vendor>
+  <id>com.timindustries.regexpluginv2</id>
+  <name>RegexPluginV2</name>
+  <vendor email="tim.gallois.c@gmail.com">Tim Gallois</vendor>
   <depends>com.intellij.modules.platform</depends>
   <extensions defaultExtensionNs="com.intellij">
     <toolWindow id="Regex" icon="AllIcons.General.Modified" anchor="bottom"
-                factoryClass="com.wyrdrune.regexplugin.RegexPluginToolWindowFactory"/>
+                factoryClass="com.timindustries.regexpluginv2.RegexPluginToolWindowFactory"/>
   </extensions>
 </idea-plugin>

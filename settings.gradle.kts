@@ -1,1 +1,1 @@
-rootProject.name = "regexPlugin"
+rootProject.name = "regexPluginV2"
